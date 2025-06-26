@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "uikit",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "uikit (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "uikit (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "alice",
+            "cwd": "packages/alice",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "alice (profile mode)",
+            "cwd": "packages/alice",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "alice (release mode)",
+            "cwd": "packages/alice",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "uikit",
+            "cwd": "packages/uikit",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "uikit (profile mode)",
+            "cwd": "packages/uikit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "uikit (release mode)",
+            "cwd": "packages/uikit",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

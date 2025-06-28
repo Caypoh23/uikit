@@ -6,7 +6,7 @@ import 'package:im_uikit/uikit.dart';
 
 class MyProgressIndicator extends StatelessWidget {
   const MyProgressIndicator({
-    this.size = 20,
+    this.size = 24,
     this.strokeWidth = 3,
     //
     this.color,

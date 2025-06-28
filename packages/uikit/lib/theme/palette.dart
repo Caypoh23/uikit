@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class Palette {
   static const int _whiteValue = 0xFFFFFFFF;
   static const int _blackValue = 0xFF000000;
-  static const int _grayValue = 0xFF515560;
-  static const int _redValue = 0xFFDC4141;
+  static const int _grayValue = 0xFFE2E2E2;
+  static const int _redValue = 0xFFE40C00;
   static const int _yellowValue = 0xFFD88F00;
-  static const int _greenValue = 0xFF18A557;
+  static const int _greenValue = 0xFF00AE1A;
   static const int _blueValue = 0xFF004271;
   static const int _purpleValue = 0xFF9225FF;
 
@@ -37,7 +37,7 @@ class Palette {
       300: Color(0xFF767981),
       400: Color(0xFF515560),
       500: Color(_grayValue),
-      600: Color(0xFF3A3D45),
+      600: Color(0xFFE8E8E8),
       700: Color(0xFF31333A),
       800: Color(0xFF25272C),
       900: Color(0xFF1D1F23),
@@ -117,7 +117,7 @@ class Palette {
       300: Color(0xFF4E83FF),
       400: Color(0xFF1F62FF),
       500: Color(_blueValue),
-      600: Color(0xFF1647B8),
+      600: Color(0xFF005BA3),
       700: Color(0xFF133B99),
       800: Color(0xFF0D2A6E),
       900: Color(0xFF091D4D),

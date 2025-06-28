@@ -51,7 +51,7 @@ LabelSmall _generateTypographyFromBrightness(Brightness brightness) {
 }
 
 const _baseTypography = TextStyle(
-  fontSize: 11,
-  height: 11 / 16,
+  fontSize: 10,
+  height: 12 / 10,
   fontWeight: FontWeight.w400,
 );

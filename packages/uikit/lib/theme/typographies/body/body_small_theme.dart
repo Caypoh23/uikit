@@ -52,6 +52,6 @@ BodySmall _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 12,
-  height: 12 / 16,
+  height: 16 / 12,
   fontWeight: FontWeight.w400,
 );

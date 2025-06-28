@@ -11,9 +11,9 @@ final darkTextColors = _generatePaletteFromBrightness(Brightness.dark);
 TextColors _generatePaletteFromBrightness(Brightness brightness) {
   if (brightness == Brightness.light) {
     return TextColors(
-      primary: Palette.gray.shade900,
-      secondary: Palette.gray.shade400,
-      tertiary: Palette.gray.shade200,
+      primary: const Color(0xFFFFFFFF),
+      secondary: const Color(0xFF000000),
+      tertiary: const Color(0xFF777777),
       placeholder: Palette.gray.shade200,
       mask: Palette.gray.shade100,
       hint: Palette.gray.shade100,
@@ -36,9 +36,9 @@ TextColors _generatePaletteFromBrightness(Brightness brightness) {
     );
   } else {
     return TextColors(
-      primary: Palette.gray[15]!,
-      secondary: Palette.gray[25]!,
-      tertiary: Palette.gray.shade300,
+      primary: const Color(0xFFFFFFFF),
+      secondary: const Color(0xFF000000),
+      tertiary: const Color(0xFF777777),
       placeholder: Palette.gray.shade300,
       mask: Palette.gray.shade400,
       hint: Palette.gray.shade400,

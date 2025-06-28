@@ -52,6 +52,6 @@ TitleMedium _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 16,
-  height: 16 / 24,
+  height: 24 / 16,
   fontWeight: FontWeight.w400,
 );

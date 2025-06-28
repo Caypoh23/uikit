@@ -52,6 +52,6 @@ HeadlineLarge _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 32,
-  height: 32 / 40,
+  height: 40 / 32,
   fontWeight: FontWeight.w400,
 );

@@ -63,16 +63,6 @@ extension AppTypographyThemeDataContextExtension on BuildContext {
   /// fontSize: 14
   TitleSmall get titleSmall => Theme.of(this).titleSmall;
 
-  // Label typography
-  /// fontSize: 14
-  LabelLarge get labelLarge => Theme.of(this).labelLarge;
-
-  /// fontSize: 12
-  LabelMedium get labelMedium => Theme.of(this).labelMedium;
-
-  /// fontSize: 11
-  LabelSmall get labelSmall => Theme.of(this).labelSmall;
-
   // Body typography
   /// fontSize: 16
   BodyLarge get bodyLarge => Theme.of(this).bodyLarge;
@@ -82,4 +72,14 @@ extension AppTypographyThemeDataContextExtension on BuildContext {
 
   /// fontSize: 12
   BodySmall get bodySmall => Theme.of(this).bodySmall;
+
+  // Label typography
+  /// fontSize: 14
+  LabelLarge get labelLarge => Theme.of(this).labelLarge;
+
+  /// fontSize: 12
+  LabelMedium get labelMedium => Theme.of(this).labelMedium;
+
+  /// fontSize: 10
+  LabelSmall get labelSmall => Theme.of(this).labelSmall;
 }

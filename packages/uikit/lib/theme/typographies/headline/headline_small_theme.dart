@@ -52,6 +52,6 @@ HeadlineSmall _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 24,
-  height: 24 / 32,
+  height: 32 / 24,
   fontWeight: FontWeight.w400,
 );

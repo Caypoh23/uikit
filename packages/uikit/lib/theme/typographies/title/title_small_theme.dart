@@ -52,6 +52,6 @@ TitleSmall _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 14,
-  height: 14 / 20,
+  height: 20 / 14,
   fontWeight: FontWeight.w400,
 );

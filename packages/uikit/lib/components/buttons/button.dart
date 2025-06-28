@@ -20,6 +20,8 @@ enum ButtonSize {
   large,
 }
 
+const _iconSize = 24.0;
+
 class Button extends StatelessWidget {
   const Button.primary({
     required this.text,
@@ -32,10 +34,11 @@ class Button extends StatelessWidget {
     this.subtext,
     this.count,
     //
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.large,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showSubtext = false,
     this.enable = true,
     //
     this.width,
@@ -53,10 +56,11 @@ class Button extends StatelessWidget {
     this.subtext,
     this.count,
     //
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.large,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showSubtext = false,
     this.enable = true,
     //
     this.width,
@@ -74,10 +78,11 @@ class Button extends StatelessWidget {
     this.subtext,
     this.count,
     //
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.large,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showSubtext = false,
     this.enable = true,
     //
     this.width,
@@ -95,10 +100,11 @@ class Button extends StatelessWidget {
     this.subtext,
     this.count,
     //
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.large,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showSubtext = false,
     this.enable = true,
     //
     this.width,
@@ -116,10 +122,11 @@ class Button extends StatelessWidget {
     this.subtext,
     this.count,
     //
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.large,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showSubtext = false,
     this.enable = true,
     //
     this.width,
@@ -137,10 +144,11 @@ class Button extends StatelessWidget {
     this.subtext,
     this.count,
     //
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.large,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showSubtext = false,
     this.enable = true,
     //
     this.width,
@@ -158,10 +166,11 @@ class Button extends StatelessWidget {
     this.subtext,
     this.count,
     //
-    this.size = ButtonSize.medium,
+    this.size = ButtonSize.large,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showSubtext = false,
     this.enable = true,
     //
     this.width,
@@ -185,6 +194,7 @@ class Button extends StatelessWidget {
   final EdgeInsets margin;
 
   final bool isLoading;
+  final bool showSubtext;
   final bool enable;
 
   final double? width;
@@ -196,73 +206,88 @@ class Button extends StatelessWidget {
       child: MyInkWell(
         width: width,
         margin: margin,
-        padding: _getPadding(),
+        height: _getHeight(),
         onLongPress: onLongPress,
-        onTap: enable && !isLoading ? onTap : null,
         color: enable || isLoading
             ? _enabledColor(context)
             : _disabledColor(context),
         splashColor: _splashColor(context),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color:
-              enable || isLoading ? _borderColor(context) : Colors.transparent,
-        ),
-        child: SizedBox(
-          height: _getHeight(),
-          child: Stack(
-            children: [
-              if (!isLoading)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    if (iconStart != null) ...[
-                      iconStart!,
-                      const SizedBox(width: 8),
-                    ],
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          text,
-                          style: _getTextStyle(context),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        if (subtext != null)
-                          Text(
-                            subtext!,
-                            style: context.bodySmall.regular,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                      ],
+        onTap: enable && !isLoading ? onTap : null,
+        hoverColor: enable || isLoading ? _hoverColor(context) : null,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (!isLoading)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (iconStart != null) ...[
+                    SizedBox(
+                      width: _iconSize,
+                      height: _iconSize,
+                      child: iconStart!,
                     ),
-                    if (iconEnd != null) ...[
-                      const SizedBox(width: 8),
-                      iconEnd!,
-                    ],
-                    if (count != null) ...[
-                      const SizedBox(width: 8),
-                      _ButtonBadge(
-                        count: count!,
-                        size: _getBadgeSize(),
+                    const SizedBox(width: 8),
+                  ],
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        text,
+                        style: _getTextStyle(context),
+                        overflow: TextOverflow.ellipsis,
                       ),
+                      if (subtext != null) _subtextWidget(context),
                     ],
-                  ],
-                )
-              else
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MyProgressIndicator(
-                      color: _textColor(context),
+                  ),
+                  if (iconEnd != null) ...[
+                    const SizedBox(width: 8),
+                    SizedBox(
+                      width: _iconSize,
+                      height: _iconSize,
+                      child: iconEnd!,
                     ),
                   ],
-                ),
-            ],
-          ),
+                  if (count != null) ...[
+                    const SizedBox(width: 8),
+                    _ButtonBadge(
+                      count: count!,
+                      size: _getBadgeSize(),
+                      color: _getBadgeColor(),
+                      textColor: _enabledColor(context),
+                    ),
+                  ],
+                ],
+              )
+            else
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MyProgressIndicator(
+                    color: _textColor(context),
+                  ),
+                  if (showSubtext && subtext != null) ...[
+                    SizedBox(height: 4),
+                    _subtextWidget(context),
+                  ]
+                ],
+              ),
+          ],
         ),
+      ),
+    );
+  }
+
+  Widget _subtextWidget(BuildContext context) {
+    return Text(
+      subtext!,
+      overflow: TextOverflow.ellipsis,
+      style: context.labelSmall.regular.copyWith(
+        color: _textColor(context),
       ),
     );
   }
@@ -288,37 +313,65 @@ class Button extends StatelessWidget {
     }
   }
 
-  EdgeInsets _getPadding() {
-    switch (size) {
-      case ButtonSize.small:
-        return const EdgeInsets.symmetric(horizontal: 12, vertical: 6);
-      case ButtonSize.medium:
-        return const EdgeInsets.symmetric(horizontal: 16, vertical: 8);
-      case ButtonSize.large:
-        return const EdgeInsets.symmetric(horizontal: 24, vertical: 12);
+  Color _getBadgeColor() {
+    switch (_type) {
+      case ButtonType.primary:
+      case ButtonType.inverted:
+      case ButtonType.positive:
+      case ButtonType.negative:
+        return Colors.white;
+      case ButtonType.secondary:
+      case ButtonType.tertiary:
+      case ButtonType.ghost:
+        return Colors.black;
     }
   }
 
+  // Color _getBadgeTextColor() {
+  //   switch (_type) {
+  //     case ButtonType.primary:
+  //     case ButtonType.inverted:
+  //     case ButtonType.positive:
+  //     case ButtonType.negative:
+  //       return Colors.black;
+  //     case ButtonType.secondary:
+  //     case ButtonType.tertiary:
+  //     case ButtonType.ghost:
+  //       return Colors.white;
+  //   }
+  // }
+
   TextStyle _getTextStyle(BuildContext context) {
     switch (size) {
-      case ButtonSize.small:
-        return context.bodyLarge.medium.copyWith(
-          color: enable || isLoading
-              ? _textColor(context)
-              : context.textColors.primary,
-        );
-      case ButtonSize.medium:
-        return context.bodyLarge.medium.copyWith(
-          color: enable || isLoading
-              ? _textColor(context)
-              : context.textColors.primary,
-        );
       case ButtonSize.large:
-        return context.bodyLarge.medium.copyWith(
-          color: enable || isLoading
-              ? _textColor(context)
-              : context.textColors.primary,
+        return context.bodyLarge.semibold.copyWith(color: _textColor(context));
+      case ButtonSize.medium:
+        return context.bodyLarge.semibold.copyWith(color: _textColor(context));
+      case ButtonSize.small:
+        return context.bodyMedium.semibold.copyWith(
+          color: _textColor(context),
         );
+    }
+  }
+
+  Color _textColor(BuildContext context) {
+    final theme = Theme.of(context);
+    if (!enable) {
+      return context.textColors.tertiary.withValues(alpha: 0.5);
+    }
+    switch (_type) {
+      case ButtonType.ghost:
+      case ButtonType.tertiary:
+      case ButtonType.secondary:
+        return theme.textColors.secondary;
+      case ButtonType.inverted:
+        return theme.textColors.primary;
+      case ButtonType.positive:
+        return theme.textColors.primary;
+      case ButtonType.negative:
+        return theme.textColors.primary;
+      default:
+        return theme.textColors.primary;
     }
   }
 
@@ -342,45 +395,23 @@ class Button extends StatelessWidget {
     }
   }
 
-  Color _disabledColor(BuildContext context) {
+  Color _hoverColor(BuildContext context) {
     final theme = Theme.of(context);
     switch (_type) {
       case ButtonType.primary:
-        return theme.buttonColors.primaryDisable;
+        return theme.buttonColors.primaryHover;
       case ButtonType.secondary:
-        return theme.buttonColors.secondaryDisable;
+        return theme.buttonColors.secondaryHover;
       case ButtonType.tertiary:
-        return theme.buttonColors.tertiaryDisable;
+        return theme.buttonColors.tertiaryHover;
       case ButtonType.inverted:
-        return theme.buttonColors.invertedDisable;
+        return theme.buttonColors.invertedHover;
       case ButtonType.ghost:
-        return theme.buttonColors.ghostDisable;
+        return theme.buttonColors.ghostHover;
       case ButtonType.positive:
-        return theme.buttonColors.positiveDisable;
+        return theme.buttonColors.positiveHover;
       case ButtonType.negative:
-        return theme.buttonColors.negativeDisable;
-    }
-  }
-
-  Color _borderColor(BuildContext context) {
-    return Colors.transparent;
-  }
-
-  Color _textColor(BuildContext context) {
-    final theme = Theme.of(context);
-    switch (_type) {
-      case ButtonType.secondary:
-      case ButtonType.tertiary:
-      case ButtonType.ghost:
-        return theme.textColors.primary;
-      case ButtonType.inverted:
-        return theme.textColors.white;
-      case ButtonType.positive:
-        return theme.textColors.white;
-      case ButtonType.negative:
-        return theme.textColors.white;
-      default:
-        return theme.textColors.white;
+        return theme.buttonColors.negativeHover;
     }
   }
 
@@ -403,16 +434,40 @@ class Button extends StatelessWidget {
         return theme.buttonColors.negativePressed;
     }
   }
+
+  Color _disabledColor(BuildContext context) {
+    final theme = Theme.of(context);
+    switch (_type) {
+      case ButtonType.primary:
+        return theme.buttonColors.primaryDisable;
+      case ButtonType.secondary:
+        return theme.buttonColors.secondaryDisable;
+      case ButtonType.tertiary:
+        return theme.buttonColors.tertiaryDisable;
+      case ButtonType.inverted:
+        return theme.buttonColors.invertedDisable;
+      case ButtonType.ghost:
+        return theme.buttonColors.ghostDisable;
+      case ButtonType.positive:
+        return theme.buttonColors.positiveDisable;
+      case ButtonType.negative:
+        return theme.buttonColors.negativeDisable;
+    }
+  }
 }
 
 class _ButtonBadge extends StatelessWidget {
   const _ButtonBadge({
     required this.count,
     required this.size,
+    required this.color,
+    required this.textColor,
   });
 
   final int count;
   final double size;
+  final Color color;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -420,13 +475,15 @@ class _ButtonBadge extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: color,
         shape: BoxShape.circle,
       ),
       alignment: Alignment.center,
       child: Text(
         '$count',
-        style: context.bodySmall.regular,
+        style: context.bodyLarge.regular.copyWith(
+          color: textColor,
+        ),
       ),
     );
   }

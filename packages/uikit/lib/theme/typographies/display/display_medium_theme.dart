@@ -52,6 +52,6 @@ DisplayMedium _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 45,
-  height: 45 / 52,
+  height: 52 / 45,
   fontWeight: FontWeight.w400,
 );

@@ -52,6 +52,6 @@ TitleLarge _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 22,
-  height: 22 / 28,
+  height: 28 / 22,
   fontWeight: FontWeight.w400,
 );

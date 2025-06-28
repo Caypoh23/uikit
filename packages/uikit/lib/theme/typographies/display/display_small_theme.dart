@@ -52,6 +52,6 @@ DisplaySmall _generateTypographyFromBrightness(Brightness brightness) {
 
 const _baseTypography = TextStyle(
   fontSize: 36,
-  height: 36 / 44,
+  height: 44 / 36,
   fontWeight: FontWeight.w400,
 );

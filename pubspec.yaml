@@ -29,4 +29,15 @@ flutter:
 
   uses-material-design: true
 
+fonts:
+  - family: SuisseIntl
+    fonts:
+      - asset: assets/fonts/SuisseIntl-Regular.otf
+        weight: 400
+      - asset: assets/fonts/SuisseIntl-Medium.otf
+        weight: 500
+      - asset: assets/fonts/SuisseIntl-Semibold.otf
+        weight: 600
+      - asset: assets/fonts/SuisseIntl-Bold.otf
+        weight: 700
   

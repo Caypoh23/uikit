@@ -7,7 +7,7 @@ import 'package:im_uikit/theme/gradients/gradients.dart';
 import 'package:im_uikit/theme/system_overlay.dart';
 import 'package:im_uikit/theme/typographies/typographies.dart';
 
-const _fontFamily = 'Roboto';
+const _fontFamily = 'SuisseIntl';
 
 final lightTheme = createThemeData(
   brightness: Brightness.light,
@@ -43,6 +43,9 @@ final lightTheme = createThemeData(
   bodyLarge: lightBodyLarge,
   bodyMedium: lightBodyMedium,
   bodySmall: lightBodySmall,
+  labelLarge: lightLabelLarge,
+  labelMedium: lightLabelMedium,
+  labelSmall: lightLabelSmall,
 );
 
 final darkTheme = createThemeData(
@@ -79,6 +82,9 @@ final darkTheme = createThemeData(
   bodyLarge: darkBodyLarge,
   bodyMedium: darkBodyMedium,
   bodySmall: darkBodySmall,
+  labelLarge: darkLabelLarge,
+  labelMedium: darkLabelMedium,
+  labelSmall: darkLabelSmall,
 );
 
 ThemeData createThemeData({
@@ -103,12 +109,15 @@ ThemeData createThemeData({
   required HeadlineLarge headlineLarge,
   required HeadlineMedium headlineMedium,
   required HeadlineSmall headlineSmall,
-  required TitleLarge titleLarge,
-  required TitleMedium titleMedium,
-  required TitleSmall titleSmall,
   required BodyLarge bodyLarge,
   required BodyMedium bodyMedium,
   required BodySmall bodySmall,
+  required LabelLarge labelLarge,
+  required LabelMedium labelMedium,
+  required LabelSmall labelSmall,
+  required TitleLarge titleLarge,
+  required TitleMedium titleMedium,
+  required TitleSmall titleSmall,
 }) =>
     ThemeData(
       brightness: brightness,
@@ -138,12 +147,32 @@ ThemeData createThemeData({
         bodyLarge,
         bodyMedium,
         bodySmall,
+        labelLarge,
+        labelMedium,
+        labelSmall,
       },
       fontFamily: _fontFamily,
       dividerColor: elementColors.system,
       primaryColor: elementColors.success,
       disabledColor: elementColors.disable,
       scaffoldBackgroundColor: backgroundColors.primary,
+      primaryTextTheme: TextTheme(
+        displayLarge: displayLarge.regular,
+        displayMedium: displayMedium.regular,
+        displaySmall: displaySmall.regular,
+        headlineLarge: headlineLarge.regular,
+        headlineMedium: headlineMedium.regular,
+        headlineSmall: headlineSmall.regular,
+        titleLarge: titleLarge.regular,
+        titleMedium: titleMedium.regular,
+        titleSmall: titleSmall.regular,
+        bodyLarge: bodyLarge.regular,
+        bodyMedium: bodyMedium.regular,
+        bodySmall: bodySmall.regular,
+        labelLarge: labelLarge.regular,
+        labelMedium: labelMedium.regular,
+        labelSmall: labelSmall.regular,
+      ),
 
       /// App Bar Theme
       appBarTheme: AppBarTheme(

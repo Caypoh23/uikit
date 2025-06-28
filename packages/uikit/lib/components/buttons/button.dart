@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:im_uikit/uikit.dart';
 
-enum _MyButtonType {
+enum ButtonType {
   primary,
   secondary,
   tertiary,
@@ -14,26 +14,25 @@ enum _MyButtonType {
   negative,
 }
 
-enum MyButtonSize {
+enum ButtonSize {
   small,
   medium,
   large,
 }
 
-class MyButton extends StatelessWidget {
-  const MyButton.primary({
-    required this.label,
+class Button extends StatelessWidget {
+  const Button.primary({
+    required this.text,
     required this.onTap,
     //
     this.onLongPress,
     //
-    this.iconLeft,
-    this.iconRight,
+    this.iconStart,
+    this.iconEnd,
     this.subtext,
     this.count,
     //
-    this.size = MyButtonSize.medium,
-    this.padding,
+    this.size = ButtonSize.medium,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -41,21 +40,20 @@ class MyButton extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = _MyButtonType.primary;
+  }) : _type = ButtonType.primary;
 
-  const MyButton.secondary({
-    required this.label,
+  const Button.secondary({
+    required this.text,
     required this.onTap,
     //
     this.onLongPress,
     //
-    this.iconLeft,
-    this.iconRight,
+    this.iconStart,
+    this.iconEnd,
     this.subtext,
     this.count,
     //
-    this.size = MyButtonSize.medium,
-    this.padding,
+    this.size = ButtonSize.medium,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -63,21 +61,20 @@ class MyButton extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = _MyButtonType.secondary;
+  }) : _type = ButtonType.secondary;
 
-  const MyButton.tertiary({
-    required this.label,
+  const Button.tertiary({
+    required this.text,
     required this.onTap,
     //
     this.onLongPress,
     //
-    this.iconLeft,
-    this.iconRight,
+    this.iconStart,
+    this.iconEnd,
     this.subtext,
     this.count,
     //
-    this.size = MyButtonSize.medium,
-    this.padding,
+    this.size = ButtonSize.medium,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -85,21 +82,20 @@ class MyButton extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = _MyButtonType.tertiary;
+  }) : _type = ButtonType.tertiary;
 
-  const MyButton.inverted({
-    required this.label,
+  const Button.inverted({
+    required this.text,
     required this.onTap,
     //
     this.onLongPress,
     //
-    this.iconLeft,
-    this.iconRight,
+    this.iconStart,
+    this.iconEnd,
     this.subtext,
     this.count,
     //
-    this.size = MyButtonSize.medium,
-    this.padding,
+    this.size = ButtonSize.medium,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -107,21 +103,20 @@ class MyButton extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = _MyButtonType.inverted;
+  }) : _type = ButtonType.inverted;
 
-  const MyButton.ghost({
-    required this.label,
+  const Button.ghost({
+    required this.text,
     required this.onTap,
     //
     this.onLongPress,
     //
-    this.iconLeft,
-    this.iconRight,
+    this.iconStart,
+    this.iconEnd,
     this.subtext,
     this.count,
     //
-    this.size = MyButtonSize.medium,
-    this.padding,
+    this.size = ButtonSize.medium,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -129,21 +124,20 @@ class MyButton extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = _MyButtonType.ghost;
+  }) : _type = ButtonType.ghost;
 
-  const MyButton.positive({
-    required this.label,
+  const Button.positive({
+    required this.text,
     required this.onTap,
     //
     this.onLongPress,
     //
-    this.iconLeft,
-    this.iconRight,
+    this.iconStart,
+    this.iconEnd,
     this.subtext,
     this.count,
     //
-    this.size = MyButtonSize.medium,
-    this.padding,
+    this.size = ButtonSize.medium,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -151,21 +145,20 @@ class MyButton extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = _MyButtonType.positive;
+  }) : _type = ButtonType.positive;
 
-  const MyButton.negative({
-    required this.label,
+  const Button.negative({
+    required this.text,
     required this.onTap,
     //
     this.onLongPress,
     //
-    this.iconLeft,
-    this.iconRight,
+    this.iconStart,
+    this.iconEnd,
     this.subtext,
     this.count,
     //
-    this.size = MyButtonSize.medium,
-    this.padding,
+    this.size = ButtonSize.medium,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -173,22 +166,22 @@ class MyButton extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = _MyButtonType.negative;
+  }) : _type = ButtonType.negative;
 
-  final String label;
+  final String text;
+
+  final Widget? iconStart;
+  final Widget? iconEnd;
+
   final String? subtext;
   final int? count;
 
-  final _MyButtonType _type;
-  final MyButtonSize size;
+  final ButtonType _type;
+  final ButtonSize size;
 
   final void Function() onTap;
   final void Function()? onLongPress;
 
-  final Widget? iconLeft;
-  final Widget? iconRight;
-
-  final EdgeInsets? padding;
   final EdgeInsets margin;
 
   final bool isLoading;
@@ -203,18 +196,18 @@ class MyButton extends StatelessWidget {
       child: MyInkWell(
         width: width,
         margin: margin,
-        padding: padding ?? _getPadding(),
-        border: Border.all(
-          color:
-              enable || isLoading ? _borderColor(context) : Colors.transparent,
-        ),
+        padding: _getPadding(),
         onLongPress: onLongPress,
-        borderRadius: BorderRadius.circular(12),
         onTap: enable && !isLoading ? onTap : null,
         color: enable || isLoading
             ? _enabledColor(context)
             : _disabledColor(context),
         splashColor: _splashColor(context),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color:
+              enable || isLoading ? _borderColor(context) : Colors.transparent,
+        ),
         child: SizedBox(
           height: _getHeight(),
           child: Stack(
@@ -224,36 +217,37 @@ class MyButton extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    if (iconLeft != null) ...[
-                      iconLeft!,
+                    if (iconStart != null) ...[
+                      iconStart!,
                       const SizedBox(width: 8),
                     ],
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          text,
+                          style: _getTextStyle(context),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        if (subtext != null)
                           Text(
-                            label,
-                            style: _getTextStyle(context),
+                            subtext!,
+                            style: context.bodySmall.regular,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          if (subtext != null)
-                            Text(
-                              subtext!,
-                              style: _getSubtextStyle(context),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                        ],
-                      ),
+                      ],
                     ),
-                    if (iconRight != null) ...[
+                    if (iconEnd != null) ...[
                       const SizedBox(width: 8),
-                      iconRight!,
+                      iconEnd!,
                     ],
                     if (count != null) ...[
                       const SizedBox(width: 8),
-                      _ButtonBadge(count: count!, size: size),
+                      _ButtonBadge(
+                        count: count!,
+                        size: _getBadgeSize(),
+                      ),
                     ],
                   ],
                 )
@@ -275,42 +269,52 @@ class MyButton extends StatelessWidget {
 
   double _getHeight() {
     switch (size) {
-      case MyButtonSize.small:
+      case ButtonSize.small:
         return 32;
-      case MyButtonSize.medium:
+      case ButtonSize.medium:
         return 40;
-      case MyButtonSize.large:
+      case ButtonSize.large:
         return 56;
+    }
+  }
+
+  double _getBadgeSize() {
+    switch (size) {
+      case ButtonSize.large:
+      case ButtonSize.medium:
+        return 28;
+      case ButtonSize.small:
+        return 20;
     }
   }
 
   EdgeInsets _getPadding() {
     switch (size) {
-      case MyButtonSize.small:
+      case ButtonSize.small:
         return const EdgeInsets.symmetric(horizontal: 12, vertical: 6);
-      case MyButtonSize.medium:
+      case ButtonSize.medium:
         return const EdgeInsets.symmetric(horizontal: 16, vertical: 8);
-      case MyButtonSize.large:
+      case ButtonSize.large:
         return const EdgeInsets.symmetric(horizontal: 24, vertical: 12);
     }
   }
 
   TextStyle _getTextStyle(BuildContext context) {
     switch (size) {
-      case MyButtonSize.small:
-        return context.labelMedium.regular.copyWith(
+      case ButtonSize.small:
+        return context.bodyLarge.medium.copyWith(
           color: enable || isLoading
               ? _textColor(context)
               : context.textColors.primary,
         );
-      case MyButtonSize.medium:
-        return context.titleMedium.regular.copyWith(
+      case ButtonSize.medium:
+        return context.bodyLarge.medium.copyWith(
           color: enable || isLoading
               ? _textColor(context)
               : context.textColors.primary,
         );
-      case MyButtonSize.large:
-        return context.titleLarge.regular.copyWith(
+      case ButtonSize.large:
+        return context.bodyLarge.medium.copyWith(
           color: enable || isLoading
               ? _textColor(context)
               : context.textColors.primary,
@@ -318,33 +322,22 @@ class MyButton extends StatelessWidget {
     }
   }
 
-  TextStyle _getSubtextStyle(BuildContext context) {
-    // Suisse Intl, Regular, 10, 12
-    return const TextStyle(
-      fontFamily: 'Suisse Intl',
-      fontWeight: FontWeight.w400,
-      fontSize: 10,
-      height: 12 / 10,
-      color: Colors.white, // theme this
-    );
-  }
-
   Color _enabledColor(BuildContext context) {
     final theme = Theme.of(context);
     switch (_type) {
-      case _MyButtonType.primary:
+      case ButtonType.primary:
         return theme.buttonColors.primary;
-      case _MyButtonType.secondary:
+      case ButtonType.secondary:
         return theme.buttonColors.secondary;
-      case _MyButtonType.tertiary:
+      case ButtonType.tertiary:
         return theme.buttonColors.tertiary;
-      case _MyButtonType.inverted:
+      case ButtonType.inverted:
         return theme.buttonColors.inverted;
-      case _MyButtonType.ghost:
+      case ButtonType.ghost:
         return theme.buttonColors.ghost;
-      case _MyButtonType.positive:
+      case ButtonType.positive:
         return theme.buttonColors.positive;
-      case _MyButtonType.negative:
+      case ButtonType.negative:
         return theme.buttonColors.negative;
     }
   }
@@ -352,45 +345,39 @@ class MyButton extends StatelessWidget {
   Color _disabledColor(BuildContext context) {
     final theme = Theme.of(context);
     switch (_type) {
-      case _MyButtonType.primary:
+      case ButtonType.primary:
         return theme.buttonColors.primaryDisable;
-      case _MyButtonType.secondary:
+      case ButtonType.secondary:
         return theme.buttonColors.secondaryDisable;
-      case _MyButtonType.tertiary:
+      case ButtonType.tertiary:
         return theme.buttonColors.tertiaryDisable;
-      case _MyButtonType.inverted:
+      case ButtonType.inverted:
         return theme.buttonColors.invertedDisable;
-      case _MyButtonType.ghost:
+      case ButtonType.ghost:
         return theme.buttonColors.ghostDisable;
-      case _MyButtonType.positive:
+      case ButtonType.positive:
         return theme.buttonColors.positiveDisable;
-      case _MyButtonType.negative:
+      case ButtonType.negative:
         return theme.buttonColors.negativeDisable;
     }
   }
 
   Color _borderColor(BuildContext context) {
-    final theme = Theme.of(context);
-    switch (_type) {
-      case _MyButtonType.ghost:
-        return theme.elementColors.system;
-      default:
-        return Colors.transparent;
-    }
+    return Colors.transparent;
   }
 
   Color _textColor(BuildContext context) {
     final theme = Theme.of(context);
     switch (_type) {
-      case _MyButtonType.secondary:
-      case _MyButtonType.tertiary:
-      case _MyButtonType.ghost:
+      case ButtonType.secondary:
+      case ButtonType.tertiary:
+      case ButtonType.ghost:
         return theme.textColors.primary;
-      case _MyButtonType.inverted:
+      case ButtonType.inverted:
         return theme.textColors.white;
-      case _MyButtonType.positive:
+      case ButtonType.positive:
         return theme.textColors.white;
-      case _MyButtonType.negative:
+      case ButtonType.negative:
         return theme.textColors.white;
       default:
         return theme.textColors.white;
@@ -400,62 +387,46 @@ class MyButton extends StatelessWidget {
   Color _splashColor(BuildContext context) {
     final theme = Theme.of(context);
     switch (_type) {
-      case _MyButtonType.primary:
+      case ButtonType.primary:
         return theme.buttonColors.primaryPressed;
-      case _MyButtonType.secondary:
+      case ButtonType.secondary:
         return theme.buttonColors.secondaryPressed;
-      case _MyButtonType.tertiary:
+      case ButtonType.tertiary:
         return theme.buttonColors.tertiaryPressed;
-      case _MyButtonType.inverted:
+      case ButtonType.inverted:
         return theme.buttonColors.invertedPressed;
-      case _MyButtonType.ghost:
+      case ButtonType.ghost:
         return theme.buttonColors.ghostPressed;
-      case _MyButtonType.positive:
+      case ButtonType.positive:
         return theme.buttonColors.positivePressed;
-      case _MyButtonType.negative:
+      case ButtonType.negative:
         return theme.buttonColors.negativePressed;
     }
   }
 }
 
-// Badge widget for count
 class _ButtonBadge extends StatelessWidget {
+  const _ButtonBadge({
+    required this.count,
+    required this.size,
+  });
+
   final int count;
-  final MyButtonSize size;
-  const _ButtonBadge({required this.count, required this.size});
+  final double size;
 
   @override
   Widget build(BuildContext context) {
-    double badgeSize;
-    TextStyle textStyle;
-    switch (size) {
-      case MyButtonSize.small:
-        badgeSize = 20;
-        textStyle = const TextStyle(
-            fontSize: 12, fontWeight: FontWeight.w600, height: 1.2);
-        break;
-      case MyButtonSize.medium:
-        badgeSize = 24;
-        textStyle = const TextStyle(
-            fontSize: 14, fontWeight: FontWeight.w600, height: 1.2);
-        break;
-      case MyButtonSize.large:
-        badgeSize = 28;
-        textStyle = const TextStyle(
-            fontSize: 16, fontWeight: FontWeight.w600, height: 1.25);
-        break;
-    }
     return Container(
-      width: badgeSize,
-      height: badgeSize,
+      width: size,
+      height: size,
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.16), // theme this
+        color: Colors.white,
         shape: BoxShape.circle,
       ),
       alignment: Alignment.center,
       child: Text(
         '$count',
-        style: textStyle.copyWith(color: Colors.white),
+        style: context.bodySmall.regular,
       ),
     );
   }

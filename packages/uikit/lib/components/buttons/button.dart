@@ -58,7 +58,7 @@ class Button extends StatelessWidget {
   final ButtonType type;
   final ButtonSize size;
 
-  final void Function() onTap;
+  final void Function()? onTap;
   final void Function()? onLongPress;
 
   final EdgeInsets margin;
@@ -79,8 +79,8 @@ class Button extends StatelessWidget {
         margin: margin,
         height: _height,
         onLongPress: onLongPress,
+        borderRadius: _borderRadius,
         splashColor: _splashColor(context),
-        borderRadius: BorderRadius.circular(16),
         onTap: enable && !isLoading ? onTap : null,
         hoverColor: enable || isLoading ? _hoverColor(context) : null,
         color: enable ? _enabledColor(context) : _disabledColor(context),
@@ -181,6 +181,15 @@ class Button extends StatelessWidget {
       ),
     );
   }
+
+  ///
+  /// Button Border Radius
+  ///
+
+  BorderRadius get _borderRadius => switch (size) {
+        ButtonSize.small => BorderRadius.circular(12),
+        ButtonSize.large || ButtonSize.medium => BorderRadius.circular(16),
+      };
 
   ///
   /// Button Sizes

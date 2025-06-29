@@ -41,7 +41,6 @@ class MyBadge extends StatelessWidget {
       badgeContent: Text(
         count.toString(),
         style: Theme.of(context).textTheme.labelMedium!.copyWith(
-              fontSize: 12,
               color: _textColor(context),
             ),
       ),

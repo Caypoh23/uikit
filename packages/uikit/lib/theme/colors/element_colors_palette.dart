@@ -13,7 +13,7 @@ ElementColors _generatePaletteFromBrightness(Brightness brightness) {
     return ElementColors(
       primary: Palette.gray[950]!,
       secondary: Palette.gray.shade400,
-      tertiary: Palette.gray.shade200,
+      tertiary: const Color(0xFF777777),
       additional: Palette.gray.shade200,
       additionalTwo: Palette.gray.shade50,
       disable: Palette.gray[25]!,
@@ -36,7 +36,7 @@ ElementColors _generatePaletteFromBrightness(Brightness brightness) {
     return ElementColors(
       primary: Palette.gray[15]!,
       secondary: Palette.gray[25]!,
-      tertiary: Palette.gray.shade300,
+      tertiary: const Color(0xFF777777),
       additional: Palette.gray.shade300,
       additionalTwo: Palette.gray.shade500,
       disable: Palette.gray.shade600,

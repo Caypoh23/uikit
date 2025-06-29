@@ -54,10 +54,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             uikit.Button.primary(
               // enable: false,
-              text: 'Оплатить',
-              onTap: _incrementCounter,
+              // isLoading: true,
+              // showText: false,
               count: 8,
+              text: 'Оплатить',
+              showSubtext: true,
+              onTap: _incrementCounter,
               subtext: 'Subtext',
+              size: uikit.ButtonSize.large,
               iconStart: const Icon(
                 Icons.refresh_rounded,
                 color: Colors.white,

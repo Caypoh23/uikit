@@ -38,6 +38,7 @@ class Button extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showText = true,
     this.showSubtext = false,
     this.enable = true,
     //
@@ -60,6 +61,7 @@ class Button extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showText = true,
     this.showSubtext = false,
     this.enable = true,
     //
@@ -82,6 +84,7 @@ class Button extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showText = true,
     this.showSubtext = false,
     this.enable = true,
     //
@@ -104,6 +107,7 @@ class Button extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showText = true,
     this.showSubtext = false,
     this.enable = true,
     //
@@ -126,6 +130,7 @@ class Button extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showText = true,
     this.showSubtext = false,
     this.enable = true,
     //
@@ -148,6 +153,7 @@ class Button extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showText = true,
     this.showSubtext = false,
     this.enable = true,
     //
@@ -170,6 +176,7 @@ class Button extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
+    this.showText = true,
     this.showSubtext = false,
     this.enable = true,
     //
@@ -194,6 +201,7 @@ class Button extends StatelessWidget {
   final EdgeInsets margin;
 
   final bool isLoading;
+  final bool showText;
   final bool showSubtext;
   final bool enable;
 
@@ -206,7 +214,7 @@ class Button extends StatelessWidget {
       child: MyInkWell(
         width: width,
         margin: margin,
-        height: _getHeight(),
+        height: _height,
         onLongPress: onLongPress,
         color: enable || isLoading
             ? _enabledColor(context)
@@ -217,12 +225,10 @@ class Button extends StatelessWidget {
         hoverColor: enable || isLoading ? _hoverColor(context) : null,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (!isLoading)
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (iconStart != null) ...[
                     SizedBox(
@@ -233,14 +239,13 @@ class Button extends StatelessWidget {
                     const SizedBox(width: 8),
                   ],
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        text,
-                        style: _getTextStyle(context),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      if (showText)
+                        Text(
+                          text,
+                          style: _textStyle(context),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       if (subtext != null) _subtextWidget(context),
                     ],
                   ),
@@ -254,11 +259,30 @@ class Button extends StatelessWidget {
                   ],
                   if (count != null) ...[
                     const SizedBox(width: 8),
-                    _ButtonBadge(
-                      count: count!,
-                      size: _getBadgeSize(),
-                      color: _getBadgeColor(),
-                      textColor: _enabledColor(context),
+                    SizedBox(
+                      width: _badgeSize,
+                      height: _badgeSize,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: ShaderMask(
+                          blendMode: BlendMode.srcOut,
+                          shaderCallback: (bounds) {
+                            return LinearGradient(
+                              colors: [
+                                _badgeColor(context),
+                                _badgeColor(context),
+                              ],
+                            ).createShader(bounds);
+                          },
+                          child: Center(
+                            child: Text(
+                              '$count',
+                              textAlign: TextAlign.center,
+                              style: context.bodyLarge.semibold,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ],
@@ -268,6 +292,7 @@ class Button extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MyProgressIndicator(
+                    size: _loadingSize,
                     color: _textColor(context),
                   ),
                   if (showSubtext && subtext != null) ...[
@@ -292,28 +317,41 @@ class Button extends StatelessWidget {
     );
   }
 
-  double _getHeight() {
+  double get _height {
     switch (size) {
       case ButtonSize.small:
-        return 32;
-      case ButtonSize.medium:
         return 40;
+      case ButtonSize.medium:
+        return 48;
       case ButtonSize.large:
         return 56;
     }
   }
 
-  double _getBadgeSize() {
+  double get _loadingSize {
     switch (size) {
       case ButtonSize.large:
       case ButtonSize.medium:
-        return 28;
+        return 24;
       case ButtonSize.small:
         return 20;
     }
   }
 
-  Color _getBadgeColor() {
+  double get _badgeSize {
+    switch (size) {
+      case ButtonSize.large:
+      case ButtonSize.medium:
+        return 28;
+      case ButtonSize.small:
+        return 24;
+    }
+  }
+
+  Color _badgeColor(BuildContext context) {
+    if (!enable) {
+      return context.elementColors.tertiary.withValues(alpha: 0.5);
+    }
     switch (_type) {
       case ButtonType.primary:
       case ButtonType.inverted:
@@ -327,30 +365,14 @@ class Button extends StatelessWidget {
     }
   }
 
-  // Color _getBadgeTextColor() {
-  //   switch (_type) {
-  //     case ButtonType.primary:
-  //     case ButtonType.inverted:
-  //     case ButtonType.positive:
-  //     case ButtonType.negative:
-  //       return Colors.black;
-  //     case ButtonType.secondary:
-  //     case ButtonType.tertiary:
-  //     case ButtonType.ghost:
-  //       return Colors.white;
-  //   }
-  // }
-
-  TextStyle _getTextStyle(BuildContext context) {
+  TextStyle _textStyle(BuildContext context) {
     switch (size) {
       case ButtonSize.large:
         return context.bodyLarge.semibold.copyWith(color: _textColor(context));
       case ButtonSize.medium:
         return context.bodyLarge.semibold.copyWith(color: _textColor(context));
       case ButtonSize.small:
-        return context.bodyMedium.semibold.copyWith(
-          color: _textColor(context),
-        );
+        return context.bodyMedium.semibold.copyWith(color: _textColor(context));
     }
   }
 
@@ -453,38 +475,5 @@ class Button extends StatelessWidget {
       case ButtonType.negative:
         return theme.buttonColors.negativeDisable;
     }
-  }
-}
-
-class _ButtonBadge extends StatelessWidget {
-  const _ButtonBadge({
-    required this.count,
-    required this.size,
-    required this.color,
-    required this.textColor,
-  });
-
-  final int count;
-  final double size;
-  final Color color;
-  final Color textColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        '$count',
-        style: context.bodyLarge.regular.copyWith(
-          color: textColor,
-        ),
-      ),
-    );
   }
 }

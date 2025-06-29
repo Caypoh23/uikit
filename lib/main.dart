@@ -52,15 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            uikit.Button.primary(
-              // enable: false,
-              // isLoading: true,
-              // showText: false,
+            uikit.Button(
               count: 8,
               text: 'Оплатить',
-              showSubtext: true,
               onTap: _incrementCounter,
               subtext: 'Subtext',
+              type: uikit.ButtonType.tertiary,
               size: uikit.ButtonSize.large,
               iconStart: const Icon(
                 Icons.refresh_rounded,

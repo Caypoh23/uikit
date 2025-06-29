@@ -23,7 +23,7 @@ enum ButtonSize {
 const _iconSize = 24.0;
 
 class Button extends StatelessWidget {
-  const Button.primary({
+  const Button({
     required this.text,
     required this.onTap,
     //
@@ -35,6 +35,7 @@ class Button extends StatelessWidget {
     this.count,
     //
     this.size = ButtonSize.large,
+    this.type = ButtonType.primary,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -44,145 +45,7 @@ class Button extends StatelessWidget {
     //
     this.width,
     super.key,
-  }) : _type = ButtonType.primary;
-
-  const Button.secondary({
-    required this.text,
-    required this.onTap,
-    //
-    this.onLongPress,
-    //
-    this.iconStart,
-    this.iconEnd,
-    this.subtext,
-    this.count,
-    //
-    this.size = ButtonSize.large,
-    this.margin = EdgeInsets.zero,
-    //
-    this.isLoading = false,
-    this.showText = true,
-    this.showSubtext = false,
-    this.enable = true,
-    //
-    this.width,
-    super.key,
-  }) : _type = ButtonType.secondary;
-
-  const Button.tertiary({
-    required this.text,
-    required this.onTap,
-    //
-    this.onLongPress,
-    //
-    this.iconStart,
-    this.iconEnd,
-    this.subtext,
-    this.count,
-    //
-    this.size = ButtonSize.large,
-    this.margin = EdgeInsets.zero,
-    //
-    this.isLoading = false,
-    this.showText = true,
-    this.showSubtext = false,
-    this.enable = true,
-    //
-    this.width,
-    super.key,
-  }) : _type = ButtonType.tertiary;
-
-  const Button.inverted({
-    required this.text,
-    required this.onTap,
-    //
-    this.onLongPress,
-    //
-    this.iconStart,
-    this.iconEnd,
-    this.subtext,
-    this.count,
-    //
-    this.size = ButtonSize.large,
-    this.margin = EdgeInsets.zero,
-    //
-    this.isLoading = false,
-    this.showText = true,
-    this.showSubtext = false,
-    this.enable = true,
-    //
-    this.width,
-    super.key,
-  }) : _type = ButtonType.inverted;
-
-  const Button.ghost({
-    required this.text,
-    required this.onTap,
-    //
-    this.onLongPress,
-    //
-    this.iconStart,
-    this.iconEnd,
-    this.subtext,
-    this.count,
-    //
-    this.size = ButtonSize.large,
-    this.margin = EdgeInsets.zero,
-    //
-    this.isLoading = false,
-    this.showText = true,
-    this.showSubtext = false,
-    this.enable = true,
-    //
-    this.width,
-    super.key,
-  }) : _type = ButtonType.ghost;
-
-  const Button.positive({
-    required this.text,
-    required this.onTap,
-    //
-    this.onLongPress,
-    //
-    this.iconStart,
-    this.iconEnd,
-    this.subtext,
-    this.count,
-    //
-    this.size = ButtonSize.large,
-    this.margin = EdgeInsets.zero,
-    //
-    this.isLoading = false,
-    this.showText = true,
-    this.showSubtext = false,
-    this.enable = true,
-    //
-    this.width,
-    super.key,
-  }) : _type = ButtonType.positive;
-
-  const Button.negative({
-    required this.text,
-    required this.onTap,
-    //
-    this.onLongPress,
-    //
-    this.iconStart,
-    this.iconEnd,
-    this.subtext,
-    this.count,
-    //
-    this.size = ButtonSize.large,
-    this.margin = EdgeInsets.zero,
-    //
-    this.isLoading = false,
-    this.showText = true,
-    this.showSubtext = false,
-    this.enable = true,
-    //
-    this.width,
-    super.key,
-  }) : _type = ButtonType.negative;
+  });
 
   final String text;
 
@@ -192,7 +55,7 @@ class Button extends StatelessWidget {
   final String? subtext;
   final int? count;
 
-  final ButtonType _type;
+  final ButtonType type;
   final ButtonSize size;
 
   final void Function() onTap;
@@ -216,13 +79,11 @@ class Button extends StatelessWidget {
         margin: margin,
         height: _height,
         onLongPress: onLongPress,
-        color: enable || isLoading
-            ? _enabledColor(context)
-            : _disabledColor(context),
         splashColor: _splashColor(context),
         borderRadius: BorderRadius.circular(16),
         onTap: enable && !isLoading ? onTap : null,
         hoverColor: enable || isLoading ? _hoverColor(context) : null,
+        color: enable ? _enabledColor(context) : _disabledColor(context),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -307,9 +168,13 @@ class Button extends StatelessWidget {
     );
   }
 
+  ///
+  /// Subtext Widget
+  ///
+
   Widget _subtextWidget(BuildContext context) {
     return Text(
-      subtext!,
+      subtext ?? '',
       overflow: TextOverflow.ellipsis,
       style: context.labelSmall.regular.copyWith(
         color: _textColor(context),
@@ -317,163 +182,130 @@ class Button extends StatelessWidget {
     );
   }
 
-  double get _height {
-    switch (size) {
-      case ButtonSize.small:
-        return 40;
-      case ButtonSize.medium:
-        return 48;
-      case ButtonSize.large:
-        return 56;
+  ///
+  /// Button Sizes
+  ///
+
+  double get _height => switch (size) {
+        ButtonSize.small => 40,
+        ButtonSize.medium => 48,
+        ButtonSize.large => 56,
+      };
+
+  double get _loadingSize => switch (size) {
+        ButtonSize.large || ButtonSize.medium => 24,
+        ButtonSize.small => 20,
+      };
+
+  double get _badgeSize => switch (size) {
+        ButtonSize.large || ButtonSize.medium => 28,
+        ButtonSize.small => 24,
+      };
+
+  ///
+  /// Button Text Styles
+  ///
+
+  TextStyle _textStyle(BuildContext context) => switch (size) {
+        ButtonSize.large ||
+        ButtonSize.medium =>
+          context.bodyLarge.semibold.copyWith(color: _textColor(context)),
+        ButtonSize.small =>
+          context.bodyMedium.semibold.copyWith(color: _textColor(context)),
+      };
+
+  Color _textColor(BuildContext context) {
+    final textColors = Theme.of(context).textColors;
+    if (!enable) {
+      return textColors.tertiary.withValues(alpha: 0.5);
     }
+    return switch (type) {
+      ButtonType.ghost ||
+      ButtonType.tertiary ||
+      ButtonType.secondary =>
+        textColors.secondary,
+      ButtonType.inverted ||
+      ButtonType.positive ||
+      ButtonType.negative ||
+      ButtonType.primary =>
+        textColors.primary,
+    };
   }
 
-  double get _loadingSize {
-    switch (size) {
-      case ButtonSize.large:
-      case ButtonSize.medium:
-        return 24;
-      case ButtonSize.small:
-        return 20;
-    }
-  }
-
-  double get _badgeSize {
-    switch (size) {
-      case ButtonSize.large:
-      case ButtonSize.medium:
-        return 28;
-      case ButtonSize.small:
-        return 24;
-    }
-  }
+  ///
+  /// Badge Colors
+  ///
 
   Color _badgeColor(BuildContext context) {
     if (!enable) {
       return context.elementColors.tertiary.withValues(alpha: 0.5);
     }
-    switch (_type) {
-      case ButtonType.primary:
-      case ButtonType.inverted:
-      case ButtonType.positive:
-      case ButtonType.negative:
-        return Colors.white;
-      case ButtonType.secondary:
-      case ButtonType.tertiary:
-      case ButtonType.ghost:
-        return Colors.black;
-    }
+    return switch (type) {
+      ButtonType.primary ||
+      ButtonType.inverted ||
+      ButtonType.positive ||
+      ButtonType.negative =>
+        Colors.white,
+      ButtonType.secondary ||
+      ButtonType.tertiary ||
+      ButtonType.ghost =>
+        Colors.black,
+    };
   }
 
-  TextStyle _textStyle(BuildContext context) {
-    switch (size) {
-      case ButtonSize.large:
-        return context.bodyLarge.semibold.copyWith(color: _textColor(context));
-      case ButtonSize.medium:
-        return context.bodyLarge.semibold.copyWith(color: _textColor(context));
-      case ButtonSize.small:
-        return context.bodyMedium.semibold.copyWith(color: _textColor(context));
-    }
-  }
-
-  Color _textColor(BuildContext context) {
-    final theme = Theme.of(context);
-    if (!enable) {
-      return context.textColors.tertiary.withValues(alpha: 0.5);
-    }
-    switch (_type) {
-      case ButtonType.ghost:
-      case ButtonType.tertiary:
-      case ButtonType.secondary:
-        return theme.textColors.secondary;
-      case ButtonType.inverted:
-        return theme.textColors.primary;
-      case ButtonType.positive:
-        return theme.textColors.primary;
-      case ButtonType.negative:
-        return theme.textColors.primary;
-      default:
-        return theme.textColors.primary;
-    }
-  }
+  ///
+  /// Button States Colors
+  ///
 
   Color _enabledColor(BuildContext context) {
-    final theme = Theme.of(context);
-    switch (_type) {
-      case ButtonType.primary:
-        return theme.buttonColors.primary;
-      case ButtonType.secondary:
-        return theme.buttonColors.secondary;
-      case ButtonType.tertiary:
-        return theme.buttonColors.tertiary;
-      case ButtonType.inverted:
-        return theme.buttonColors.inverted;
-      case ButtonType.ghost:
-        return theme.buttonColors.ghost;
-      case ButtonType.positive:
-        return theme.buttonColors.positive;
-      case ButtonType.negative:
-        return theme.buttonColors.negative;
-    }
+    final buttonColors = Theme.of(context).buttonColors;
+    return switch (type) {
+      ButtonType.primary => buttonColors.primary,
+      ButtonType.secondary => buttonColors.secondary,
+      ButtonType.tertiary => buttonColors.tertiary,
+      ButtonType.inverted => buttonColors.inverted,
+      ButtonType.ghost => buttonColors.ghost,
+      ButtonType.positive => buttonColors.positive,
+      ButtonType.negative => buttonColors.negative,
+    };
   }
 
   Color _hoverColor(BuildContext context) {
-    final theme = Theme.of(context);
-    switch (_type) {
-      case ButtonType.primary:
-        return theme.buttonColors.primaryHover;
-      case ButtonType.secondary:
-        return theme.buttonColors.secondaryHover;
-      case ButtonType.tertiary:
-        return theme.buttonColors.tertiaryHover;
-      case ButtonType.inverted:
-        return theme.buttonColors.invertedHover;
-      case ButtonType.ghost:
-        return theme.buttonColors.ghostHover;
-      case ButtonType.positive:
-        return theme.buttonColors.positiveHover;
-      case ButtonType.negative:
-        return theme.buttonColors.negativeHover;
-    }
+    final buttonColors = Theme.of(context).buttonColors;
+    return switch (type) {
+      ButtonType.primary => buttonColors.primaryHover,
+      ButtonType.secondary => buttonColors.secondaryHover,
+      ButtonType.tertiary => buttonColors.tertiaryHover,
+      ButtonType.inverted => buttonColors.invertedHover,
+      ButtonType.ghost => buttonColors.ghostHover,
+      ButtonType.positive => buttonColors.positiveHover,
+      ButtonType.negative => buttonColors.negativeHover,
+    };
   }
 
   Color _splashColor(BuildContext context) {
-    final theme = Theme.of(context);
-    switch (_type) {
-      case ButtonType.primary:
-        return theme.buttonColors.primaryPressed;
-      case ButtonType.secondary:
-        return theme.buttonColors.secondaryPressed;
-      case ButtonType.tertiary:
-        return theme.buttonColors.tertiaryPressed;
-      case ButtonType.inverted:
-        return theme.buttonColors.invertedPressed;
-      case ButtonType.ghost:
-        return theme.buttonColors.ghostPressed;
-      case ButtonType.positive:
-        return theme.buttonColors.positivePressed;
-      case ButtonType.negative:
-        return theme.buttonColors.negativePressed;
-    }
+    final buttonColors = Theme.of(context).buttonColors;
+    return switch (type) {
+      ButtonType.primary => buttonColors.primaryPressed,
+      ButtonType.secondary => buttonColors.secondaryPressed,
+      ButtonType.tertiary => buttonColors.tertiaryPressed,
+      ButtonType.inverted => buttonColors.invertedPressed,
+      ButtonType.ghost => buttonColors.ghostPressed,
+      ButtonType.positive => buttonColors.positivePressed,
+      ButtonType.negative => buttonColors.negativePressed,
+    };
   }
 
   Color _disabledColor(BuildContext context) {
-    final theme = Theme.of(context);
-    switch (_type) {
-      case ButtonType.primary:
-        return theme.buttonColors.primaryDisable;
-      case ButtonType.secondary:
-        return theme.buttonColors.secondaryDisable;
-      case ButtonType.tertiary:
-        return theme.buttonColors.tertiaryDisable;
-      case ButtonType.inverted:
-        return theme.buttonColors.invertedDisable;
-      case ButtonType.ghost:
-        return theme.buttonColors.ghostDisable;
-      case ButtonType.positive:
-        return theme.buttonColors.positiveDisable;
-      case ButtonType.negative:
-        return theme.buttonColors.negativeDisable;
-    }
+    final buttonColors = Theme.of(context).buttonColors;
+    return switch (type) {
+      ButtonType.primary => buttonColors.primaryDisable,
+      ButtonType.secondary => buttonColors.secondaryDisable,
+      ButtonType.tertiary => buttonColors.tertiaryDisable,
+      ButtonType.inverted => buttonColors.invertedDisable,
+      ButtonType.ghost => buttonColors.ghostDisable,
+      ButtonType.positive => buttonColors.positiveDisable,
+      ButtonType.negative => buttonColors.negativeDisable,
+    };
   }
 }

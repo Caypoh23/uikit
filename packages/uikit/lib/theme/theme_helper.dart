@@ -152,9 +152,6 @@ ThemeData createThemeData({
         labelSmall,
       },
       fontFamily: _fontFamily,
-      fontFamilyFallback: const [
-        'sans-serif',
-      ],
       dividerColor: elementColors.system,
       primaryColor: elementColors.success,
       disabledColor: elementColors.disable,

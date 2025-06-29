@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: uikit.lightTheme,
       darkTheme: uikit.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -45,51 +45,40 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // uikit.Button(
-            // count: 8,
-            //   text: 'Оплатить',
-            //   onTap: _incrementCounter,
-            //   subtext: 'Subtext',
-            //   iconStart: const Icon(
-            //     Icons.refresh_rounded,
-            //     color: Colors.white,
-            //   ),
-            //   iconEnd: const Icon(
-            //     Icons.arrow_forward_ios,
-            //     color: Colors.white,
-            //   ),
-            // ),
-            // uikit.ButtonCell(
-            //   direction: Axis.vertical,
-            //   primaryText: 'Primary',
-            //   onPrimaryTap: () {},
-            //   secondaryText: 'Secondary',
-            //   onSecondaryTap: () {},
-            //   tertiaryText: 'Cancel',
-            //   onTertiaryTap: () {},
-            //   captionText:
-            //       'By clicking on the button, you agree to process your data and the "Public Offer"',
-            //   captionHighlight: '"Public Offer"',
-            //   onCaptionTap: () {},
-            //   anchorTitle: 'Text at the Top of the button',
-            //   anchorIcon: const Icon(Icons.chevron_right),
-            //   informativeTitle: 'Informative',
-            //   informativeIcon: const Icon(
-            //     Icons.info_outline,
-            //     color: Colors.white,
-            //   ),
-            // ),
-            // uikit.Accordion(
-            //   title: const Text('Title'),
-            //   content: const Text('Content'),
-            // ),
-            // const Text(
-            //   'You have pushed the button this many times:',
-            // ),
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headlineMedium,
-            // ),
+            uikit.Button(
+              text: 'Open Buttons Example',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const uikit.ButtonsExamplePage(),
+                  ),
+                );
+              },
+              iconEnd: Icon(
+                Icons.arrow_forward_ios,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.white
+                    : Colors.black,
+              ),
+            ),
+            const SizedBox(height: 16),
+            uikit.Button(
+              text: 'Open ButtonCell Example',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const uikit.ButtonCellExamplePage(),
+                  ),
+                );
+              },
+              type: uikit.ButtonType.secondary,
+              iconEnd: Icon(
+                Icons.arrow_forward_ios,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.white
+                    : Colors.black,
+              ),
+            ),
           ],
         ),
       ),

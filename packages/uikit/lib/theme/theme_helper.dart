@@ -275,31 +275,43 @@ ThemeData createThemeData({
       ),
 
       /// Input Field Theme
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: fieldColors.background,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: borderColors.primary),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: borderColors.primary),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: elementColors.success, width: 2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: elementColors.error),
-        ),
-        hintStyle: bodyMedium.regular.copyWith(
-          color: textColors.secondary,
-        ),
-      ),
+      // inputDecorationTheme: InputDecorationTheme(
+      //   filled: true,
+      //   fillColor: fieldColors.background,
+      //   //
+      //   labelStyle: labelMedium.regular.copyWith(
+      //     color: Colors.black,
+      //   ),
+      //   hintStyle: labelMedium.regular.copyWith(
+      //     color: Colors.black,
+      //   ),
+      //   errorStyle: labelMedium.regular.copyWith(
+      //     color: Colors.black,
+      //   ),
+      //   floatingLabelStyle: labelMedium.regular.copyWith(
+      //     color: Colors.black,
+      //   ),
+      //   //
+      //   prefixStyle: labelMedium.regular,
+      //   suffixStyle: labelMedium.regular,
+      //   //
+      //   border: OutlineInputBorder(
+      //     borderSide: BorderSide.none,
+      //   ),
+      //   enabledBorder: OutlineInputBorder(
+      //     borderSide: BorderSide.none,
+      //   ),
+      //   disabledBorder: OutlineInputBorder(
+      //     borderSide: BorderSide.none,
+      //   ),
+      //   hoverColor: fieldColors.borderHover,
+      //   focusedBorder: OutlineInputBorder(
+      //     borderSide: BorderSide.none,
+      //   ),
+      //   errorBorder: OutlineInputBorder(
+      //     borderSide: BorderSide.none,
+      //   ),
+      // ),
 
       /// Checkbox Theme
       checkboxTheme: CheckboxThemeData(

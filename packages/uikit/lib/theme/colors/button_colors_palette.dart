@@ -10,9 +10,9 @@ final darkButtonColors = _generatePaletteFromBrightness(Brightness.dark);
 ButtonColors _generatePaletteFromBrightness(Brightness brightness) {
   if (brightness == Brightness.light) {
     return ButtonColors(
-      primary: const Color(0xFF004271),
-      primaryHover: const Color(0xFF002848),
-      primaryPressed: const Color(0xFF005BA3),
+      primary: const Color(0xFF222222),
+      primaryHover: const Color(0xFF444444),
+      primaryPressed: const Color(0xFF333333),
       primaryDisable: const Color(0x1A111111),
       secondary: const Color(0xFFE2E2E2),
       secondaryHover: const Color(0xFFCACACA),
@@ -41,9 +41,9 @@ ButtonColors _generatePaletteFromBrightness(Brightness brightness) {
     );
   } else {
     return ButtonColors(
-      primary: const Color(0xFF004271),
-      primaryHover: const Color(0xFF002848),
-      primaryPressed: const Color(0xFF005BA3),
+      primary: const Color(0xFF222222),
+      primaryHover: const Color(0xFF444444),
+      primaryPressed: const Color(0xFF333333),
       primaryDisable: const Color(0x1A111111),
       secondary: const Color(0xFFE2E2E2),
       secondaryHover: const Color(0xFFCACACA),

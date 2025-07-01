@@ -13,13 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: uikit.lightTheme,
-      darkTheme: uikit.darkTheme,
-      themeMode: ThemeMode.dark,
-      debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return uikit.MyFocusRemover(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: uikit.lightTheme,
+        darkTheme: uikit.darkTheme,
+        themeMode: ThemeMode.light,
+        debugShowCheckedModeBanner: false,
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
     );
   }
 }
@@ -78,6 +80,29 @@ class _MyHomePageState extends State<MyHomePage> {
                     ? Colors.white
                     : Colors.black,
               ),
+            ),
+            const SizedBox(height: 16),
+            uikit.Input(
+              // enabled: false,
+              // canClear: true,
+              // initialValue: 'test',
+              // isLoading: true,
+              // isRequired: true,
+              label: 'Email',
+              suffixText: 'suffix',
+              status: uikit.InputStatus.info,
+              // captionHelperText: 'helper text',
+              // captionText: 'df',
+              hintText: 'Enter your email',
+              // captionIconPath: UikitAssets.icons24.bell.path,
+              // rightIcon: Icon(
+              //   Icons.arrow_forward_ios,
+              //   color: Colors.black,
+              // ),
+              // leftIcon: Icon(
+              //   Icons.email,
+              //   color: Colors.black,
+              // ),
             ),
           ],
         ),

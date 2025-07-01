@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:im_uikit/common/text_highlight.dart';
 import 'package:im_uikit/components/buttons/button.dart';
 import 'package:im_uikit/components/buttons/gesture_detector.dart';

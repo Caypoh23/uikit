@@ -1,5 +1,8 @@
+// Flutter imports:
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:im_uikit/theme/app_typography_theme_data.dart';
 
 class TextHighlight extends StatelessWidget {

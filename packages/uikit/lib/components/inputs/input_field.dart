@@ -34,11 +34,10 @@ class InputField extends StatefulWidget {
   const InputField({
     this.size = InputFieldSize.large,
     this.label,
-    this.suffixText,
+    this.hintText,
     this.controller,
     this.initialValue,
     //
-    this.hintText,
     this.captionIconPath,
     this.captionText,
     this.captionHelperText,
@@ -63,8 +62,8 @@ class InputField extends StatefulWidget {
     this.maxLength,
     this.inputFormatters,
     //
-    this.leftIcon,
-    this.rightIcon,
+    this.leadingIcon,
+    this.trailingIcon,
     //
     this.onTap,
     this.onChanged,
@@ -74,14 +73,12 @@ class InputField extends StatefulWidget {
   });
 
   final String? label;
+  final String? hintText;
   final String? initialValue;
-  final String? suffixText;
   final TextEditingController? controller;
 
   final InputFieldSize size;
   final InputFieldStatus status;
-
-  final String? hintText;
 
   final String? captionIconPath;
   final String? captionText;
@@ -106,8 +103,8 @@ class InputField extends StatefulWidget {
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
 
-  final Widget? leftIcon;
-  final Widget? rightIcon;
+  final Widget? leadingIcon;
+  final Widget? trailingIcon;
 
   final void Function()? onTap;
   final void Function(String)? onChanged;
@@ -181,13 +178,13 @@ class _InputFieldState extends State<InputField> {
                   ),
                   child: Row(
                     children: [
-                      if (widget.leftIcon != null) ...[
+                      if (widget.leadingIcon != null) ...[
                         SizedBox(
                           width: _iconSize,
                           height: _iconSize,
                           child: FittedBox(
                             fit: BoxFit.contain,
-                            child: widget.leftIcon!,
+                            child: widget.leadingIcon!,
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -202,6 +199,7 @@ class _InputFieldState extends State<InputField> {
                           readOnly: widget.readOnly,
                           autofocus: widget.autofocus,
                           textAlign: widget.textAlign,
+                          cursorHeight: 16,
                           cursorColor: Colors.black,
                           style: context.bodyLarge.medium.copyWith(
                             color: Colors.black.withValues(alpha: 0.5),
@@ -235,14 +233,14 @@ class _InputFieldState extends State<InputField> {
                         const SizedBox(width: 8),
                         _clearButton,
                       ],
-                      if (widget.rightIcon != null) ...[
+                      if (widget.trailingIcon != null) ...[
                         const SizedBox(width: 8),
                         SizedBox(
                           width: _iconSize,
                           height: _iconSize,
                           child: FittedBox(
                             fit: BoxFit.contain,
-                            child: widget.rightIcon!,
+                            child: widget.trailingIcon!,
                           ),
                         ),
                       ],

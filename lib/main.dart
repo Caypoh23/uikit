@@ -90,19 +90,18 @@ class _MyHomePageState extends State<MyHomePage> {
               isLoading: true,
               isRequired: true,
               label: 'Email',
-              suffixText: 'suffix',
               status: uikit.InputFieldStatus.info,
               size: uikit.InputFieldSize.large,
               captionHelperText: 'helper text',
               captionText: 'df',
               hintText: 'Enter your email',
               captionIconPath: UikitAssets.icons24.bell.path,
-              rightIcon: Icon(
+              trailingIcon: Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.black,
                 size: 50,
               ),
-              leftIcon: Icon(
+              leadingIcon: Icon(
                 Icons.email,
                 color: Colors.black,
               ),

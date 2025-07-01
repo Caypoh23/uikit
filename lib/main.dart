@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:im_uikit/gen/assets.gen.dart';
 
 // Package imports:
 import 'package:im_uikit/uikit.dart' as uikit;
@@ -82,27 +83,29 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 16),
-            uikit.Input(
+            uikit.InputField(
               // enabled: false,
               // canClear: true,
               // initialValue: 'test',
-              // isLoading: true,
-              // isRequired: true,
+              isLoading: true,
+              isRequired: true,
               label: 'Email',
               suffixText: 'suffix',
-              status: uikit.InputStatus.info,
-              // captionHelperText: 'helper text',
-              // captionText: 'df',
+              status: uikit.InputFieldStatus.info,
+              size: uikit.InputFieldSize.large,
+              captionHelperText: 'helper text',
+              captionText: 'df',
               hintText: 'Enter your email',
-              // captionIconPath: UikitAssets.icons24.bell.path,
-              // rightIcon: Icon(
-              //   Icons.arrow_forward_ios,
-              //   color: Colors.black,
-              // ),
-              // leftIcon: Icon(
-              //   Icons.email,
-              //   color: Colors.black,
-              // ),
+              captionIconPath: UikitAssets.icons24.bell.path,
+              rightIcon: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black,
+                size: 50,
+              ),
+              leftIcon: Icon(
+                Icons.email,
+                color: Colors.black,
+              ),
             ),
           ],
         ),

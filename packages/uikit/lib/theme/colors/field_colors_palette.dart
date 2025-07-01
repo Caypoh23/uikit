@@ -26,8 +26,8 @@ FieldColors _generatePaletteFromBrightness(Brightness brightness) {
       icon: Palette.gray.shade400,
       iconDisabled: Palette.gray[25]!,
       error: Palette.red.shade500,
-      warning: Palette.yellow.shade500,
-      success: Palette.green.shade500,
+      warning: const Color(0xFFF1A405),
+      success: const Color(0xFF16A34A),
       helper: Palette.gray.shade400,
     );
   } else {
@@ -47,8 +47,8 @@ FieldColors _generatePaletteFromBrightness(Brightness brightness) {
       icon: Palette.gray[25]!,
       iconDisabled: Palette.gray.shade500,
       error: Palette.red.shade500,
-      warning: Palette.yellow.shade500,
-      success: Palette.green.shade500,
+      warning: const Color(0xFFF1A405),
+      success: const Color(0xFF16A34A),
       helper: Palette.gray.shade300,
     );
   }

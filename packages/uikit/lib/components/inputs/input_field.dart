@@ -11,22 +11,28 @@ import 'package:im_uikit/gen/assets.gen.dart';
 import 'package:im_uikit/theme/app_typography_theme_data.dart';
 import 'package:im_uikit/theme/color_theme_data.dart';
 
-enum InputSize {
-  small,
-  medium,
-  large,
+const _iconSize = 24.0;
+
+enum InputFieldSize {
+  small(48),
+  medium(56),
+  large(64);
+
+  final double size;
+
+  const InputFieldSize(this.size);
 }
 
-enum InputStatus {
+enum InputFieldStatus {
   error,
   warning,
   success,
   info,
 }
 
-class Input extends StatefulWidget {
-  const Input({
-    this.size = InputSize.large,
+class InputField extends StatefulWidget {
+  const InputField({
+    this.size = InputFieldSize.large,
     this.label,
     this.suffixText,
     this.controller,
@@ -36,7 +42,7 @@ class Input extends StatefulWidget {
     this.captionIconPath,
     this.captionText,
     this.captionHelperText,
-    this.status = InputStatus.info,
+    this.status = InputFieldStatus.info,
     //
     this.enabled = true,
     this.readOnly = false,
@@ -72,8 +78,8 @@ class Input extends StatefulWidget {
   final String? suffixText;
   final TextEditingController? controller;
 
-  final InputSize size;
-  final InputStatus status;
+  final InputFieldSize size;
+  final InputFieldStatus status;
 
   final String? hintText;
 
@@ -109,10 +115,10 @@ class Input extends StatefulWidget {
   final String? Function(String?)? validator;
 
   @override
-  State<Input> createState() => _InputState();
+  State<InputField> createState() => _InputFieldState();
 }
 
-class _InputState extends State<Input> {
+class _InputFieldState extends State<InputField> {
   //
   late FocusNode focusNode;
   late TextEditingController controller;
@@ -159,12 +165,10 @@ class _InputState extends State<Input> {
             children: [
               GestureDetector(
                 onTap: focusNode.requestFocus,
+                behavior: HitTestBehavior.opaque,
                 child: Container(
-                  height: _inputHeight,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12,
-                    horizontal: 16,
-                  ),
+                  height: widget.size.size,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
                     border: Border.all(
                       width: 2,
@@ -178,14 +182,22 @@ class _InputState extends State<Input> {
                   child: Row(
                     children: [
                       if (widget.leftIcon != null) ...[
-                        widget.leftIcon!,
+                        SizedBox(
+                          width: _iconSize,
+                          height: _iconSize,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: widget.leftIcon!,
+                          ),
+                        ),
                         const SizedBox(width: 8),
                       ],
                       Expanded(
                         child: TextField(
-                          controller: controller,
+                          decoration: _decoration,
                           //
                           focusNode: focusNode,
+                          controller: controller,
                           enabled: widget.enabled,
                           readOnly: widget.readOnly,
                           autofocus: widget.autofocus,
@@ -209,7 +221,6 @@ class _InputState extends State<Input> {
                           onChanged: widget.onChanged,
                           onEditingComplete: widget.onEditingComplete,
                           //
-                          decoration: _decoration,
                           //
                           textAlignVertical: TextAlignVertical.center,
                           magnifierConfiguration:
@@ -218,15 +229,22 @@ class _InputState extends State<Input> {
                       ),
                       if (widget.isLoading) ...[
                         const SizedBox(width: 8),
-                        getLoading(),
+                        _loading,
                       ],
                       if (showClear) ...[
                         const SizedBox(width: 8),
-                        clearButton(),
+                        _clearButton,
                       ],
                       if (widget.rightIcon != null) ...[
                         const SizedBox(width: 8),
-                        widget.rightIcon!,
+                        SizedBox(
+                          width: _iconSize,
+                          height: _iconSize,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: widget.rightIcon!,
+                          ),
+                        ),
                       ],
                     ],
                   ),
@@ -246,11 +264,11 @@ class _InputState extends State<Input> {
       return Colors.transparent;
     }
     switch (widget.status) {
-      case InputStatus.error:
+      case InputFieldStatus.error:
         return context.fieldColors.error;
-      case InputStatus.warning:
+      case InputFieldStatus.warning:
         return context.fieldColors.warning;
-      case InputStatus.success:
+      case InputFieldStatus.success:
         return context.fieldColors.success;
       default:
         return isFocused && widget.enabled
@@ -259,28 +277,17 @@ class _InputState extends State<Input> {
     }
   }
 
-  double get _inputHeight {
-    switch (widget.size) {
-      case InputSize.small:
-        return 48;
-      case InputSize.medium:
-        return 56;
-      case InputSize.large:
-        return 64;
-    }
-  }
-
-  Widget getLoading() {
+  Widget get _loading {
     return const MyProgressIndicator(
-      size: 24,
+      size: _iconSize,
       color: Colors.black,
     );
   }
 
-  Widget clearButton() {
+  Widget get _clearButton {
     return SizedBox(
-      width: 24,
-      height: 24,
+      width: _iconSize,
+      height: _iconSize,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: _onClear,
@@ -297,6 +304,8 @@ class _InputState extends State<Input> {
   InputDecoration get _decoration {
     return InputDecoration(
       label: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             widget.label ?? '',
@@ -316,6 +325,7 @@ class _InputState extends State<Input> {
       labelStyle: context.labelMedium.regular.copyWith(
         color: Colors.black.withValues(alpha: 0.5),
       ),
+      hintText: widget.enabled ? widget.hintText : null,
       hintStyle: context.bodyLarge.medium.copyWith(
         color: Colors.black.withValues(alpha: 0.5),
       ),
@@ -328,23 +338,24 @@ class _InputState extends State<Input> {
       counterStyle: context.labelMedium.regular.copyWith(
         color: Colors.black.withValues(alpha: 0.5),
       ),
-      //
-      hintText: widget.enabled ? widget.hintText : null,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 4),
-      //
-      border: _border,
-      errorBorder: _border,
-      focusedBorder: _border,
-      enabledBorder: _border,
-      disabledBorder: _border,
+      contentPadding: _contentPadding,
+      border: InputBorder.none,
+      errorBorder: InputBorder.none,
+      focusedBorder: InputBorder.none,
+      enabledBorder: InputBorder.none,
+      disabledBorder: InputBorder.none,
     );
   }
 
-  InputBorder get _border {
-    return OutlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(16),
-    );
+  EdgeInsets get _contentPadding {
+    switch (widget.size) {
+      case InputFieldSize.small:
+        return const EdgeInsets.symmetric(horizontal: 4, vertical: 4);
+      case InputFieldSize.medium:
+        return const EdgeInsets.symmetric(horizontal: 4, vertical: 8);
+      case InputFieldSize.large:
+        return const EdgeInsets.symmetric(horizontal: 4, vertical: 12);
+    }
   }
 
   Widget _captionWidget() {
@@ -404,11 +415,11 @@ class _InputState extends State<Input> {
       return Colors.black.withValues(alpha: 0.5);
     }
     switch (widget.status) {
-      case InputStatus.error:
+      case InputFieldStatus.error:
         return context.textColors.error;
-      case InputStatus.warning:
+      case InputFieldStatus.warning:
         return context.textColors.warning;
-      case InputStatus.success:
+      case InputFieldStatus.success:
         return context.textColors.success;
       default:
         return Colors.black.withValues(alpha: 0.5);
@@ -420,11 +431,11 @@ class _InputState extends State<Input> {
       return Colors.black.withValues(alpha: 0.5);
     }
     switch (widget.status) {
-      case InputStatus.error:
+      case InputFieldStatus.error:
         return context.textColors.error;
-      case InputStatus.warning:
+      case InputFieldStatus.warning:
         return context.textColors.warning;
-      case InputStatus.success:
+      case InputFieldStatus.success:
         return context.textColors.success;
       default:
         return Colors.black.withValues(alpha: 0.5);

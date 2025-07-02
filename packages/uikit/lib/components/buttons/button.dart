@@ -37,6 +37,7 @@ class Button extends StatelessWidget {
     //
     this.size = ButtonSize.large,
     this.type = ButtonType.primary,
+    this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
     //
     this.isLoading = false,
@@ -64,6 +65,7 @@ class Button extends StatelessWidget {
   final void Function()? onLongPress;
 
   final EdgeInsets margin;
+  final EdgeInsets padding;
 
   final bool isLoading;
   final bool showText;
@@ -79,6 +81,7 @@ class Button extends StatelessWidget {
       child: MyInkWell(
         width: width,
         margin: margin,
+        padding: padding,
         height: _height,
         onLongPress: onLongPress,
         borderRadius: _borderRadius,

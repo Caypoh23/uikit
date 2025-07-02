@@ -62,6 +62,10 @@ class $AssetsIcons24Gen {
   /// File path: assets/icons24/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/icons24/calendar.svg');
 
+  /// File path: assets/icons24/check_circle.svg
+  SvgGenImage get checkCircle =>
+      const SvgGenImage('assets/icons24/check_circle.svg');
+
   /// File path: assets/icons24/chevron_down.svg
   SvgGenImage get chevronDown =>
       const SvgGenImage('assets/icons24/chevron_down.svg');
@@ -77,6 +81,10 @@ class $AssetsIcons24Gen {
   SvgGenImage get closeCircle =>
       const SvgGenImage('assets/icons24/close_circle.svg');
 
+  /// File path: assets/icons24/close_square.svg
+  SvgGenImage get closeSquare =>
+      const SvgGenImage('assets/icons24/close_square.svg');
+
   /// File path: assets/icons24/contact.svg
   SvgGenImage get contact => const SvgGenImage('assets/icons24/contact.svg');
 
@@ -89,27 +97,39 @@ class $AssetsIcons24Gen {
   /// File path: assets/icons24/info.svg
   SvgGenImage get info => const SvgGenImage('assets/icons24/info.svg');
 
+  /// File path: assets/icons24/info_filled.svg
+  SvgGenImage get infoFilled =>
+      const SvgGenImage('assets/icons24/info_filled.svg');
+
   /// File path: assets/icons24/reload.svg
   SvgGenImage get reload => const SvgGenImage('assets/icons24/reload.svg');
 
   /// File path: assets/icons24/scan.svg
   SvgGenImage get scan => const SvgGenImage('assets/icons24/scan.svg');
 
+  /// File path: assets/icons24/warning_triangle.svg
+  SvgGenImage get warningTriangle =>
+      const SvgGenImage('assets/icons24/warning_triangle.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
     arrowDown,
     arrowLeft,
     calendar,
+    checkCircle,
     chevronDown,
     chevronUp,
     clock,
     closeCircle,
+    closeSquare,
     contact,
     eye,
     eyeSlash,
     info,
+    infoFilled,
     reload,
     scan,
+    warningTriangle,
   ];
 }
 

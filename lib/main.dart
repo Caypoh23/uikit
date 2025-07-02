@@ -163,6 +163,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            const SizedBox(height: 16),
+            uikit.Notice.error(
+              // title: 'Title',
+              description:
+                  'Description fdsjkl fklf slk jklsd jafkljas ;lfj;as jsladfj a;ls j j s l j;',
+              // buttonText: 'Button',
+              // onButtonTap: () {},
+              onDismiss: () {},
+            ),
           ],
         ),
       ),

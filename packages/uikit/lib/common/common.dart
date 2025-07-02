@@ -1,4 +1,5 @@
 export 'accordion.dart';
-export 'filer.dart';
+export 'filter.dart';
 export 'focus_remover.dart';
+export 'notice.dart';
 export 'text_highlight.dart';

@@ -20,12 +20,12 @@ class ButtonTextStyles extends ThemeExtension<ButtonTextStyles> {
   @override
   ThemeExtension<ButtonTextStyles> copyWith({
     TextStyle? main,
-    TextStyle? suffix,
+    TextStyle? subtext,
     TextStyle? count,
   }) {
     return ButtonTextStyles(
       main: main ?? this.main,
-      subtext: suffix ?? this.subtext,
+      subtext: subtext ?? this.subtext,
       count: count ?? this.count,
     );
   }

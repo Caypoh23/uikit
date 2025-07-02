@@ -141,7 +141,7 @@ class Button extends StatelessWidget {
                             child: Text(
                               '$count',
                               textAlign: TextAlign.center,
-                              style: context.bodyLarge.semibold,
+                              style: context.button.count,
                             ),
                           ),
                         ),
@@ -178,7 +178,7 @@ class Button extends StatelessWidget {
     return Text(
       subtext ?? '',
       overflow: TextOverflow.ellipsis,
-      style: context.labelSmall.regular.copyWith(
+      style: context.button.subtext.copyWith(
         color: _textColor(context),
       ),
     );
@@ -218,7 +218,7 @@ class Button extends StatelessWidget {
   ///
 
   TextStyle _textStyle(BuildContext context) {
-    return context.bodyLarge.semibold.copyWith(
+    return context.button.main.copyWith(
       color: _textColor(context),
     );
   }
@@ -235,12 +235,12 @@ class Button extends StatelessWidget {
       ButtonType.ghost ||
       ButtonType.tertiary ||
       ButtonType.secondary =>
-        textColors.secondary,
+        textColors.primary,
       ButtonType.inverted ||
       ButtonType.positive ||
       ButtonType.negative ||
       ButtonType.primary =>
-        textColors.primary,
+        textColors.invert,
     };
   }
 

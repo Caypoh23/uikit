@@ -206,10 +206,8 @@ class _InputFieldState extends State<InputField> {
                           textAlign: widget.textAlign,
                           cursorHeight: 16,
                           cursorColor: Colors.black,
-                          style: context.bodyLarge.medium.copyWith(
-                            color: Colors.black.withValues(alpha: 0.5),
-                          ),
                           obscureText: widget.obscureText,
+                          style: context.input.placeholder,
                           keyboardType: widget.keyboardType,
                           textInputAction: widget.textInputAction,
                           textCapitalization: widget.textCapitalization,
@@ -236,15 +234,11 @@ class _InputFieldState extends State<InputField> {
                           children: [
                             Text(
                               widget.suffixLabel!,
-                              style: context.labelMedium.regular.copyWith(
-                                color: Colors.black.withValues(alpha: 0.5),
-                              ),
+                              style: context.input.suffix,
                             ),
                             Text(
                               widget.suffixValue ?? '',
-                              style: context.bodyLarge.medium.copyWith(
-                                color: Colors.black.withValues(alpha: 0.5),
-                              ),
+                              style: context.input.placeholder,
                             ),
                           ],
                         ),
@@ -334,37 +328,27 @@ class _InputFieldState extends State<InputField> {
       //
       contentPadding: const EdgeInsets.all(4),
       //
-      labelStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
+      labelStyle: context.input.label,
+      helperStyle: context.input.caption,
+      counterStyle: context.input.caption,
+      hintStyle: context.input.placeholder,
+      floatingLabelStyle: context.input.label,
       hintText: widget.enabled ? widget.hintText : null,
-      hintStyle: context.bodyLarge.medium.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      helperStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      floatingLabelStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      counterStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
       label: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             widget.label ?? '',
-            style: context.titleMedium.medium.copyWith(
+            style: context.title.medium1.copyWith(
               color: Colors.black.withValues(alpha: 0.5),
             ),
           ),
           if (widget.isRequired)
             Text(
               '*',
-              style: context.titleLarge.medium.copyWith(
-                color: Colors.red,
+              style: context.title.medium1.copyWith(
+                color: context.textColors.error,
               ),
             ),
         ],
@@ -400,7 +384,7 @@ class _InputFieldState extends State<InputField> {
                     ],
                     Text(
                       widget.captionText ?? '',
-                      style: context.labelMedium.regular.copyWith(
+                      style: context.input.caption.copyWith(
                         color: _captionColor,
                       ),
                       maxLines: 2,
@@ -411,7 +395,7 @@ class _InputFieldState extends State<InputField> {
               if (widget.captionHelperText != null) ...[
                 Text(
                   widget.captionHelperText ?? '',
-                  style: context.labelMedium.regular.copyWith(
+                  style: context.input.caption.copyWith(
                     color: _captionColor,
                   ),
                   maxLines: 2,
@@ -426,7 +410,7 @@ class _InputFieldState extends State<InputField> {
 
   Color get _captionIconColor {
     if (!widget.enabled) {
-      return Colors.black.withValues(alpha: 0.5);
+      return context.iconColors.muted;
     }
     switch (widget.status) {
       case InputFieldStatus.error:
@@ -436,7 +420,7 @@ class _InputFieldState extends State<InputField> {
       case InputFieldStatus.success:
         return context.textColors.success;
       default:
-        return Colors.black;
+        return context.iconColors.primary;
     }
   }
 

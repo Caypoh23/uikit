@@ -71,9 +71,9 @@ class ButtonCell extends StatelessWidget {
               child: TextHighlight(
                 text: captionText!,
                 onHighlightTap: onCaptionTap,
+                textStyle: context.label.main,
                 highlights: [captionHighlight ?? ''],
-                textStyle: context.labelLarge.regular,
-                highlightStyle: context.labelLarge.medium.copyWith(
+                highlightStyle: context.label.medium1.copyWith(
                   color: context.textColors.info,
                 ),
               ),
@@ -132,7 +132,7 @@ class _AnchorWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: context.labelMedium.regular,
+              style: context.label.medium1,
             ),
             if (icon != null) ...[
               SizedBox(width: 6),
@@ -262,7 +262,7 @@ class _InformativeWidget extends StatelessWidget {
           ],
           Text(
             title,
-            style: context.labelMedium.regular,
+            style: context.label.medium1,
           ),
         ],
       ),

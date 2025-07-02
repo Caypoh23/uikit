@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
             uikit.Accordion(
               title: Text(
                 'Title',
-                style: context.bodyMedium.medium.copyWith(
+                style: context.body.medium2.copyWith(
                   color: Colors.black,
                 ),
               ),
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onButtonTap: () {},
               content: Text(
                 'If we have a long text, we can use this option to accomplish the goal',
-                style: context.labelLarge.regular.copyWith(
+                style: context.label.main.copyWith(
                   color: Colors.black,
                 ),
               ),

@@ -10,25 +10,17 @@
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
-  /// File path: assets/fonts/SuisseIntl-Bold.otf
-  String get suisseIntlBold => 'assets/fonts/SuisseIntl-Bold.otf';
+  /// File path: assets/fonts/AeonikPro-Bold.otf
+  String get aeonikProBold => 'assets/fonts/AeonikPro-Bold.otf';
 
-  /// File path: assets/fonts/SuisseIntl-Medium.otf
-  String get suisseIntlMedium => 'assets/fonts/SuisseIntl-Medium.otf';
+  /// File path: assets/fonts/AeonikPro-Medium.otf
+  String get aeonikProMedium => 'assets/fonts/AeonikPro-Medium.otf';
 
-  /// File path: assets/fonts/SuisseIntl-Regular.otf
-  String get suisseIntlRegular => 'assets/fonts/SuisseIntl-Regular.otf';
-
-  /// File path: assets/fonts/SuisseIntl-Semibold.otf
-  String get suisseIntlSemibold => 'assets/fonts/SuisseIntl-Semibold.otf';
+  /// File path: assets/fonts/AeonikPro-Regular.otf
+  String get aeonikProRegular => 'assets/fonts/AeonikPro-Regular.otf';
 
   /// List of all assets
-  List<String> get values => [
-    suisseIntlBold,
-    suisseIntlMedium,
-    suisseIntlRegular,
-    suisseIntlSemibold,
-  ];
+  List<String> get values => [aeonikProBold, aeonikProMedium, aeonikProRegular];
 }
 
 class Assets {

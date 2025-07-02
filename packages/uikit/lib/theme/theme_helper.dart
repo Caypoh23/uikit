@@ -7,7 +7,7 @@ import 'package:im_uikit/theme/gradients/gradients.dart';
 import 'package:im_uikit/theme/system_overlay.dart';
 import 'package:im_uikit/theme/typographies/typographies.dart';
 
-const _fontFamily = 'SuisseIntl';
+const _fontFamily = 'Aeonik Pro';
 
 final lightTheme = createThemeData(
   brightness: Brightness.light,
@@ -33,21 +33,13 @@ final lightTheme = createThemeData(
   ),
 
   /// ---- Typographies ----
-  displayLarge: lightDisplayLarge,
-  displayMedium: lightDisplayMedium,
-  displaySmall: lightDisplaySmall,
-  headlineLarge: lightHeadlineLarge,
-  headlineMedium: lightHeadlineMedium,
-  headlineSmall: lightHeadlineSmall,
-  titleLarge: lightTitleLarge,
-  titleMedium: lightTitleMedium,
-  titleSmall: lightTitleSmall,
-  bodyLarge: lightBodyLarge,
-  bodyMedium: lightBodyMedium,
-  bodySmall: lightBodySmall,
-  labelLarge: lightLabelLarge,
-  labelMedium: lightLabelMedium,
-  labelSmall: lightLabelSmall,
+  displayTextStyles: lightDisplayTextStyle,
+  titleTextStyles: lightTitleTextStyles,
+  subtitleTextStyles: lightSubtitleTextStyles,
+  labelTextStyles: lightLabelTextStyles,
+  bodyTextStyles: lightBodyTextStyles,
+  buttonTextStyles: lightButtonTextStyles,
+  inputTextStyles: lightInputTextStyles,
 );
 
 final darkTheme = createThemeData(
@@ -74,21 +66,13 @@ final darkTheme = createThemeData(
   ),
 
   /// ---- Typographies ----
-  displayLarge: darkDisplayLarge,
-  displayMedium: darkDisplayMedium,
-  displaySmall: darkDisplaySmall,
-  headlineLarge: darkHeadlineLarge,
-  headlineMedium: darkHeadlineMedium,
-  headlineSmall: darkHeadlineSmall,
-  titleLarge: darkTitleLarge,
-  titleMedium: darkTitleMedium,
-  titleSmall: darkTitleSmall,
-  bodyLarge: darkBodyLarge,
-  bodyMedium: darkBodyMedium,
-  bodySmall: darkBodySmall,
-  labelLarge: darkLabelLarge,
-  labelMedium: darkLabelMedium,
-  labelSmall: darkLabelSmall,
+  displayTextStyles: darkDisplayTextStyle,
+  titleTextStyles: darkTitleTextStyles,
+  subtitleTextStyles: darkSubtitleTextStyles,
+  labelTextStyles: darkLabelTextStyles,
+  bodyTextStyles: darkBodyTextStyles,
+  buttonTextStyles: darkButtonTextStyles,
+  inputTextStyles: darkInputTextStyles,
 );
 
 ThemeData createThemeData({
@@ -109,21 +93,13 @@ ThemeData createThemeData({
   required PaynetGradients appGradients,
 
   /// ---- Typographies ----
-  required DisplayLarge displayLarge,
-  required DisplayMedium displayMedium,
-  required DisplaySmall displaySmall,
-  required HeadlineLarge headlineLarge,
-  required HeadlineMedium headlineMedium,
-  required HeadlineSmall headlineSmall,
-  required BodyLarge bodyLarge,
-  required BodyMedium bodyMedium,
-  required BodySmall bodySmall,
-  required LabelLarge labelLarge,
-  required LabelMedium labelMedium,
-  required LabelSmall labelSmall,
-  required TitleLarge titleLarge,
-  required TitleMedium titleMedium,
-  required TitleSmall titleSmall,
+  required DisplayTextStyles displayTextStyles,
+  required TitleTextStyles titleTextStyles,
+  required SubtitleTextStyles subtitleTextStyles,
+  required LabelTextStyles labelTextStyles,
+  required BodyTextStyles bodyTextStyles,
+  required ButtonTextStyles buttonTextStyles,
+  required InputTextStyles inputTextStyles,
 }) =>
     ThemeData(
       brightness: brightness,
@@ -141,48 +117,50 @@ ThemeData createThemeData({
 
         /// ---- Gradients ----
         appGradients,
-
-        /// ---- Typographies ----
-        displayLarge,
-        displayMedium,
-        displaySmall,
-        headlineLarge,
-        headlineMedium,
-        headlineSmall,
-        titleLarge,
-        titleMedium,
-        titleSmall,
-        bodyLarge,
-        bodyMedium,
-        bodySmall,
-        labelLarge,
-        labelMedium,
-        labelSmall,
       },
       fontFamily: _fontFamily,
       dividerColor: borderColors.primary,
       disabledColor: surfaceColors.muted,
       primaryColor: backgroundColors.primary,
       scaffoldBackgroundColor: backgroundColors.primary,
+
+      /// ---- Text Theme ----
+      textTheme: TextTheme(
+        displayLarge: displayTextStyles.large,
+        displayMedium: displayTextStyles.main,
+        displaySmall: displayTextStyles.main,
+        headlineLarge: titleTextStyles.large1,
+        headlineMedium: titleTextStyles.medium1,
+        headlineSmall: titleTextStyles.compact1,
+        titleLarge: titleTextStyles.main1,
+        titleMedium: titleTextStyles.medium1,
+        titleSmall: titleTextStyles.compact1,
+        bodyLarge: bodyTextStyles.large,
+        bodyMedium: bodyTextStyles.medium2,
+        bodySmall: bodyTextStyles.compact1,
+        labelLarge: labelTextStyles.large,
+        labelMedium: labelTextStyles.medium1,
+        labelSmall: labelTextStyles.main,
+      ),
       primaryTextTheme: TextTheme(
-        displayLarge: displayLarge.regular,
-        displayMedium: displayMedium.regular,
-        displaySmall: displaySmall.regular,
-        headlineLarge: headlineLarge.regular,
-        headlineMedium: headlineMedium.regular,
-        headlineSmall: headlineSmall.regular,
-        titleLarge: titleLarge.regular,
-        titleMedium: titleMedium.regular,
-        titleSmall: titleSmall.regular,
-        bodyLarge: bodyLarge.regular,
-        bodyMedium: bodyMedium.regular,
-        bodySmall: bodySmall.regular,
-        labelLarge: labelLarge.regular,
-        labelMedium: labelMedium.regular,
-        labelSmall: labelSmall.regular,
+        displayLarge: displayTextStyles.large,
+        displayMedium: displayTextStyles.main,
+        displaySmall: displayTextStyles.main,
+        headlineLarge: titleTextStyles.large1,
+        headlineMedium: titleTextStyles.medium1,
+        headlineSmall: titleTextStyles.compact1,
+        titleLarge: titleTextStyles.main1,
+        titleMedium: titleTextStyles.medium1,
+        titleSmall: titleTextStyles.compact1,
+        bodyLarge: bodyTextStyles.large,
+        bodyMedium: bodyTextStyles.medium2,
+        bodySmall: bodyTextStyles.compact1,
+        labelLarge: labelTextStyles.large,
+        labelMedium: labelTextStyles.medium1,
+        labelSmall: labelTextStyles.main,
       ),
 
-      /// App Bar Theme
+      /// ---- App Bar Theme ----
       appBarTheme: AppBarTheme(
         backgroundColor: backgroundColors.primary,
         elevation: 0,
@@ -190,7 +168,7 @@ ThemeData createThemeData({
         systemOverlayStyle: brightness == Brightness.light
             ? MySystemUiOverlayStyle.light
             : MySystemUiOverlayStyle.dark,
-        titleTextStyle: titleLarge.bold.copyWith(
+        titleTextStyle: titleTextStyles.large1.bold.copyWith(
           color: textColors.primary,
         ),
         iconTheme: IconThemeData(
@@ -199,13 +177,13 @@ ThemeData createThemeData({
         ),
       ),
 
-      /// Tooltip Theme
+      /// ---- Tooltip Theme ----
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
           color: backgroundColors.primary,
           borderRadius: BorderRadius.circular(8),
         ),
-        textStyle: bodyMedium.regular.copyWith(
+        textStyle: bodyTextStyles.medium2.copyWith(
           color: textColors.primary,
         ),
         padding: const EdgeInsets.symmetric(
@@ -221,7 +199,7 @@ ThemeData createThemeData({
         triggerMode: TooltipTriggerMode.longPress,
       ),
 
-      /// Chip Theme
+      /// ---- Chip Theme ----
       chipTheme: ChipThemeData(
         backgroundColor: systemColors.black,
         disabledColor: systemColors.transparent,
@@ -231,10 +209,10 @@ ThemeData createThemeData({
           vertical: 8,
           horizontal: 12,
         ),
-        labelStyle: bodySmall.medium.copyWith(
+        labelStyle: bodyTextStyles.compact1.copyWith(
           color: textColors.primary,
         ),
-        secondaryLabelStyle: bodySmall.medium.copyWith(
+        secondaryLabelStyle: bodyTextStyles.compact1.copyWith(
           color: Colors.white,
         ),
         shape: RoundedRectangleBorder(
@@ -244,7 +222,7 @@ ThemeData createThemeData({
         color: WidgetStateProperty.all(systemColors.black),
       ),
 
-      /// Button Theme
+      /// ---- Button Theme ----
       buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
@@ -276,50 +254,39 @@ ThemeData createThemeData({
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: titleMedium.medium.copyWith(
+          textStyle: titleTextStyles.medium1.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),
       ),
 
-      /// Input Field Theme
-      // inputDecorationTheme: InputDecorationTheme(
-      //   filled: true,
-      //   fillColor: fieldColors.background,
-      //   //
-      //   labelStyle: labelMedium.regular.copyWith(
-      //     color: Colors.black,
-      //   ),
-      //   hintStyle: labelMedium.regular.copyWith(
-      //     color: Colors.black,
-      //   ),
-      //   errorStyle: labelMedium.regular.copyWith(
-      //     color: Colors.black,
-      //   ),
-      //   floatingLabelStyle: labelMedium.regular.copyWith(
-      //     color: Colors.black,
-      //   ),
-      //   //
-      //   prefixStyle: labelMedium.regular,
-      //   suffixStyle: labelMedium.regular,
-      //   //
-      //   border: OutlineInputBorder(
-      //     borderSide: BorderSide.none,
-      //   ),
-      //   enabledBorder: OutlineInputBorder(
-      //     borderSide: BorderSide.none,
-      //   ),
-      //   disabledBorder: OutlineInputBorder(
-      //     borderSide: BorderSide.none,
-      //   ),
-      //   hoverColor: fieldColors.borderHover,
-      //   focusedBorder: OutlineInputBorder(
-      //     borderSide: BorderSide.none,
-      //   ),
-      //   errorBorder: OutlineInputBorder(
-      //     borderSide: BorderSide.none,
-      //   ),
-      // ),
+      /// ---- Input Field Theme ----
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: fieldColors.background,
+        //
+        labelStyle: inputTextStyles.label.regular.copyWith(
+          color: textColors.primary,
+        ),
+        hintStyle: inputTextStyles.placeholder.regular.copyWith(
+          color: textColors.tertiary,
+        ),
+        errorStyle: inputTextStyles.caption.regular.copyWith(
+          color: textColors.error,
+        ),
+        //
+        floatingLabelStyle: inputTextStyles.label.regular,
+        prefixStyle: inputTextStyles.label.regular,
+        suffixStyle: inputTextStyles.label.regular,
+        //
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        errorBorder: InputBorder.none,
+        //
+        hoverColor: fieldColors.borderHover,
+      ),
 
       /// Checkbox Theme
       checkboxTheme: CheckboxThemeData(
@@ -341,22 +308,6 @@ ThemeData createThemeData({
               ? systemColors.red
               : Colors.transparent,
         ),
-      ),
-
-      /// Text Theme
-      textTheme: TextTheme(
-        displayLarge: displayLarge.regular,
-        displayMedium: displayMedium.regular,
-        displaySmall: displaySmall.regular,
-        headlineLarge: headlineLarge.regular,
-        headlineMedium: headlineMedium.regular,
-        headlineSmall: headlineSmall.regular,
-        titleLarge: titleLarge.regular,
-        titleMedium: titleMedium.regular,
-        titleSmall: titleSmall.regular,
-        bodyLarge: bodyLarge.regular,
-        bodyMedium: bodyMedium.regular,
-        bodySmall: bodySmall.regular,
       ),
 
       /// Bottom Sheet Theme

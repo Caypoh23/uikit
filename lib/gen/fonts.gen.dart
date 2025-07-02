@@ -10,6 +10,6 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: SuisseIntl
-  static const String suisseIntl = 'SuisseIntl';
+  /// Font family: AeonikPro
+  static const String aeonikPro = 'AeonikPro';
 }

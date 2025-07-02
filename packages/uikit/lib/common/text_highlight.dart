@@ -92,14 +92,14 @@ class TextHighlight extends StatelessWidget {
   TextSpan _normalSpan(BuildContext context, String value) {
     return TextSpan(
       text: value,
-      style: textStyle ?? context.labelSmall.regular,
+      style: textStyle ?? context.label.main,
     );
   }
 
   TextSpan _highlightSpan(BuildContext context, String value) {
     return TextSpan(
       text: value,
-      style: highlightStyle ?? context.labelSmall.medium,
+      style: highlightStyle ?? context.label.medium1,
       recognizer: TapGestureRecognizer()
         ..onTap = () {
           onHighlightTap?.call();

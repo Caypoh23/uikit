@@ -5,47 +5,43 @@ class BorderColors extends ThemeExtension<BorderColors> {
   const BorderColors({
     required this.primary,
     required this.secondary,
-    required this.tertiary,
-    required this.focus,
-    required this.success,
-    required this.warning,
+    required this.muted,
+    required this.info,
     required this.error,
-    required this.accent,
-    required this.disable,
+    required this.warning,
+    required this.success,
+    required this.invert,
   });
 
   final Color primary;
   final Color secondary;
-  final Color tertiary;
-  final Color focus;
-  final Color success;
-  final Color warning;
+  final Color muted;
+  final Color info;
   final Color error;
-  final Color accent;
-  final Color disable;
+  final Color warning;
+  final Color success;
+  final Color invert;
 
   @override
   ThemeExtension<BorderColors> copyWith({
     Color? primary,
     Color? secondary,
-    Color? tertiary,
-    Color? focus,
-    Color? success,
-    Color? warning,
+    Color? muted,
+    Color? info,
     Color? error,
-    Color? accent,
-    Color? disable,
+    Color? warning,
+    Color? success,
+    Color? invert,
   }) =>
       BorderColors(
         primary: primary ?? this.primary,
         secondary: secondary ?? this.secondary,
-        tertiary: tertiary ?? this.tertiary,
-        focus: focus ?? this.focus,
-        success: success ?? this.success,
-        warning: warning ?? this.warning,
+        muted: muted ?? this.muted,
+        info: info ?? this.info,
         error: error ?? this.error,
-        accent: accent ?? this.accent,
-        disable: disable ?? this.disable,
+        warning: warning ?? this.warning,
+        success: success ?? this.success,
+        invert: invert ?? this.invert,
       );
 
   @override
@@ -59,13 +55,12 @@ class BorderColors extends ThemeExtension<BorderColors> {
     return BorderColors(
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
-      tertiary: Color.lerp(tertiary, other.tertiary, t)!,
-      focus: Color.lerp(focus, other.focus, t)!,
-      success: Color.lerp(success, other.success, t)!,
-      warning: Color.lerp(warning, other.warning, t)!,
+      muted: Color.lerp(muted, other.muted, t)!,
+      info: Color.lerp(info, other.info, t)!,
       error: Color.lerp(error, other.error, t)!,
-      accent: Color.lerp(accent, other.accent, t)!,
-      disable: Color.lerp(disable, other.disable, t)!,
+      warning: Color.lerp(warning, other.warning, t)!,
+      success: Color.lerp(success, other.success, t)!,
+      invert: Color.lerp(invert, other.invert, t)!,
     );
   }
 }

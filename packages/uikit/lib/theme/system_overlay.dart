@@ -2,9 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// Project imports:
-import 'package:im_uikit/theme/palette.dart';
-
 class MySystemUiOverlayStyle {
   static void initialize(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -23,7 +20,7 @@ class MySystemUiOverlayStyle {
     statusBarIconBrightness: Brightness.light,
     statusBarBrightness: Brightness.dark, // iOS only
     //
-    systemNavigationBarColor: Palette.gray[950]!,
+    systemNavigationBarColor: Colors.black,
     systemNavigationBarIconBrightness: Brightness.light,
     systemNavigationBarDividerColor: Colors.transparent,
   );
@@ -33,7 +30,7 @@ class MySystemUiOverlayStyle {
     statusBarIconBrightness: Brightness.dark,
     statusBarBrightness: Brightness.light, // iOS only
     //
-    systemNavigationBarColor: Palette.base[15]!,
+    systemNavigationBarColor: Colors.white,
     systemNavigationBarIconBrightness: Brightness.dark,
     systemNavigationBarDividerColor: Colors.transparent,
   );

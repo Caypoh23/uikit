@@ -250,7 +250,7 @@ class Button extends StatelessWidget {
 
   Color _badgeColor(BuildContext context) {
     if (!isEnabled) {
-      return context.elementColors.tertiary.withValues(alpha: 0.5);
+      return context.surfaceColors.muted.withValues(alpha: 0.5);
     }
     return switch (type) {
       ButtonType.primary ||

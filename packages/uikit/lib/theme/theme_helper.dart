@@ -13,13 +13,15 @@ final lightTheme = createThemeData(
   brightness: Brightness.light,
 
   /// ---- Colors ----
+  systemColors: lightSystemColors,
   backgroundColors: lightBackgroundColors,
-  borderColors: lightBorderColors,
-  buttonColors: lightButtonColors,
-  elementColors: lightElementColors,
-  fieldColors: lightFieldColors,
-  iconColors: lightIconColors,
+  surfaceColors: lightSurfaceColors,
   textColors: lightTextColors,
+  iconColors: lightIconColors,
+  borderColors: lightBorderColors,
+  statusColors: lightStatusColors,
+  buttonColors: lightButtonColors,
+  fieldColors: lightFieldColors,
 
   /// ---- Gradients ----
   appGradients: PaynetGradients(
@@ -52,13 +54,15 @@ final darkTheme = createThemeData(
   brightness: Brightness.dark,
 
   /// ---- Colors ----
+  systemColors: darkSystemColors,
   backgroundColors: darkBackgroundColors,
-  borderColors: darkBorderColors,
-  buttonColors: darkButtonColors,
-  elementColors: darkElementColors,
-  fieldColors: darkFieldColors,
-  iconColors: darkIconColors,
+  surfaceColors: darkSurfaceColors,
   textColors: darkTextColors,
+  iconColors: darkIconColors,
+  borderColors: darkBorderColors,
+  statusColors: darkStatusColors,
+  buttonColors: darkButtonColors,
+  fieldColors: darkFieldColors,
 
   /// ---- Gradients ----
   appGradients: PaynetGradients(
@@ -91,13 +95,15 @@ ThemeData createThemeData({
   required Brightness brightness,
 
   /// ---- Colors ----
+  required SystemColors systemColors,
   required BackgroundColors backgroundColors,
-  required BorderColors borderColors,
-  required ButtonColors buttonColors,
-  required ElementColors elementColors,
-  required FieldColors fieldColors,
-  required IconColors iconColors,
+  required SurfaceColors surfaceColors,
   required TextColors textColors,
+  required IconColors iconColors,
+  required BorderColors borderColors,
+  required StatusColors statusColors,
+  required ButtonColors buttonColors,
+  required FieldColors fieldColors,
 
   /// ---- Gradients ----
   required PaynetGradients appGradients,
@@ -123,13 +129,15 @@ ThemeData createThemeData({
       brightness: brightness,
       extensions: {
         /// ---- Colors ----
+        systemColors,
         backgroundColors,
-        borderColors,
-        buttonColors,
-        elementColors,
-        fieldColors,
-        iconColors,
+        surfaceColors,
         textColors,
+        iconColors,
+        borderColors,
+        statusColors,
+        buttonColors,
+        fieldColors,
 
         /// ---- Gradients ----
         appGradients,
@@ -152,9 +160,9 @@ ThemeData createThemeData({
         labelSmall,
       },
       fontFamily: _fontFamily,
-      dividerColor: elementColors.system,
-      primaryColor: elementColors.success,
-      disabledColor: elementColors.disable,
+      dividerColor: borderColors.primary,
+      disabledColor: surfaceColors.muted,
+      primaryColor: backgroundColors.primary,
       scaffoldBackgroundColor: backgroundColors.primary,
       primaryTextTheme: TextTheme(
         displayLarge: displayLarge.regular,
@@ -215,10 +223,10 @@ ThemeData createThemeData({
 
       /// Chip Theme
       chipTheme: ChipThemeData(
-        backgroundColor: elementColors.system,
-        disabledColor: elementColors.disable,
-        selectedColor: elementColors.success,
-        secondarySelectedColor: elementColors.success,
+        backgroundColor: systemColors.black,
+        disabledColor: systemColors.transparent,
+        selectedColor: systemColors.red,
+        secondarySelectedColor: systemColors.red,
         padding: const EdgeInsets.symmetric(
           vertical: 8,
           horizontal: 12,
@@ -233,7 +241,7 @@ ThemeData createThemeData({
           borderRadius: BorderRadius.circular(100),
         ),
         deleteIconColor: textColors.primary,
-        color: WidgetStateProperty.all(elementColors.system),
+        color: WidgetStateProperty.all(systemColors.black),
       ),
 
       /// Button Theme
@@ -318,19 +326,19 @@ ThemeData createThemeData({
         overlayColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.disabled)
               ? Colors.transparent
-              : elementColors.system,
+              : systemColors.black,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
         side: BorderSide(
-          color: elementColors.additionalTwo,
+          color: systemColors.transparent,
           width: 2,
         ),
         checkColor: WidgetStateProperty.all(Colors.white),
         fillColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
-              ? elementColors.success
+              ? systemColors.red
               : Colors.transparent,
         ),
       ),

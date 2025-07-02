@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-class IconColors extends ThemeExtension<IconColors> {
-  const IconColors({
+class SurfaceColors extends ThemeExtension<SurfaceColors> {
+  const SurfaceColors({
     required this.primary,
     required this.secondary,
     required this.tertiary,
@@ -11,7 +11,6 @@ class IconColors extends ThemeExtension<IconColors> {
     required this.error,
     required this.warning,
     required this.success,
-    required this.invert,
   });
 
   final Color primary;
@@ -22,10 +21,9 @@ class IconColors extends ThemeExtension<IconColors> {
   final Color error;
   final Color warning;
   final Color success;
-  final Color invert;
 
   @override
-  ThemeExtension<IconColors> copyWith({
+  ThemeExtension<SurfaceColors> copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -34,9 +32,8 @@ class IconColors extends ThemeExtension<IconColors> {
     Color? error,
     Color? warning,
     Color? success,
-    Color? invert,
   }) =>
-      IconColors(
+      SurfaceColors(
         primary: primary ?? this.primary,
         secondary: secondary ?? this.secondary,
         tertiary: tertiary ?? this.tertiary,
@@ -45,18 +42,17 @@ class IconColors extends ThemeExtension<IconColors> {
         error: error ?? this.error,
         warning: warning ?? this.warning,
         success: success ?? this.success,
-        invert: invert ?? this.invert,
       );
 
   @override
-  ThemeExtension<IconColors> lerp(
-    covariant ThemeExtension<IconColors>? other,
+  ThemeExtension<SurfaceColors> lerp(
+    covariant ThemeExtension<SurfaceColors>? other,
     double t,
   ) {
-    if (other == null || other is! IconColors) {
+    if (other == null || other is! SurfaceColors) {
       return this;
     }
-    return IconColors(
+    return SurfaceColors(
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
       tertiary: Color.lerp(tertiary, other.tertiary, t)!,
@@ -65,7 +61,6 @@ class IconColors extends ThemeExtension<IconColors> {
       error: Color.lerp(error, other.error, t)!,
       warning: Color.lerp(warning, other.warning, t)!,
       success: Color.lerp(success, other.success, t)!,
-      invert: Color.lerp(invert, other.invert, t)!,
     );
   }
 }

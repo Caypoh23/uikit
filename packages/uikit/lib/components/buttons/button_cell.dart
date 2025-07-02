@@ -74,7 +74,7 @@ class ButtonCell extends StatelessWidget {
                 highlights: [captionHighlight ?? ''],
                 textStyle: context.labelLarge.regular,
                 highlightStyle: context.labelLarge.medium.copyWith(
-                  color: context.textColors.link,
+                  color: context.textColors.info,
                 ),
               ),
             ),

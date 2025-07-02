@@ -13,21 +13,21 @@ final darkShimmerGradientColors =
 ShimmerGradientColors _generatePaletteFromBrightness(Brightness brightness) {
   if (brightness == Brightness.light) {
     return ShimmerGradientColors(
-      primaryStart: Palette.gray[15]!,
-      primaryCenter: Palette.base[15]!,
-      primaryEnd: Palette.gray[15]!,
-      secondaryStart: Palette.gray[25]!,
-      secondaryCenter: Palette.gray[15]!,
-      secondaryEnd: Palette.gray[25]!,
+      primaryStart: Palette.gray[10]!,
+      primaryCenter: Palette.gray[10]!,
+      primaryEnd: Palette.gray[10]!,
+      secondaryStart: Palette.gray[10]!,
+      secondaryCenter: Palette.gray[10]!,
+      secondaryEnd: Palette.gray[10]!,
     );
   } else {
     return ShimmerGradientColors(
-      primaryStart: Palette.gray.shade700,
-      primaryCenter: Palette.gray.shade500,
-      primaryEnd: Palette.gray.shade700,
-      secondaryStart: Palette.gray.shade700,
-      secondaryCenter: Palette.gray.shade500,
-      secondaryEnd: Palette.gray.shade700,
+      primaryStart: Palette.gray[70]!,
+      primaryCenter: Palette.gray[50]!,
+      primaryEnd: Palette.gray[70]!,
+      secondaryStart: Palette.gray[70]!,
+      secondaryCenter: Palette.gray[50]!,
+      secondaryEnd: Palette.gray[70]!,
     );
   }
 }

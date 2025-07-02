@@ -5,37 +5,47 @@ import 'package:flutter/material.dart';
 import 'package:im_uikit/theme/colors/colors.dart';
 
 extension ColorThemeDataExtension on ThemeData {
+  SystemColors get systemColors =>
+      extension<SystemColors>() ?? lightSystemColors;
+
   BackgroundColors get backgroundColors =>
       extension<BackgroundColors>() ?? lightBackgroundColors;
+
+  SurfaceColors get surfaceColors =>
+      extension<SurfaceColors>() ?? lightSurfaceColors;
+
+  TextColors get textColors => extension<TextColors>() ?? lightTextColors;
+
+  IconColors get iconColors => extension<IconColors>() ?? lightIconColors;
 
   BorderColors get borderColors =>
       extension<BorderColors>() ?? lightBorderColors;
 
+  StatusColors get statusColors =>
+      extension<StatusColors>() ?? lightStatusColors;
+
   ButtonColors get buttonColors =>
       extension<ButtonColors>() ?? lightButtonColors;
 
-  ElementColors get elementColors =>
-      extension<ElementColors>() ?? lightElementColors;
-
   FieldColors get fieldColors => extension<FieldColors>() ?? lightFieldColors;
-
-  IconColors get iconColors => extension<IconColors>() ?? lightIconColors;
-
-  TextColors get textColors => extension<TextColors>() ?? lightTextColors;
 }
 
 extension ColorThemeDataContextExtension on BuildContext {
+  SystemColors get systemColors => Theme.of(this).systemColors;
+
   BackgroundColors get backgroundColors => Theme.of(this).backgroundColors;
+
+  SurfaceColors get surfaceColors => Theme.of(this).surfaceColors;
+
+  TextColors get textColors => Theme.of(this).textColors;
 
   BorderColors get borderColors => Theme.of(this).borderColors;
 
-  ButtonColors get buttonColors => Theme.of(this).buttonColors;
-
-  ElementColors get elementColors => Theme.of(this).elementColors;
-
-  FieldColors get fieldColors => Theme.of(this).fieldColors;
-
   IconColors get iconColors => Theme.of(this).iconColors;
 
-  TextColors get textColors => Theme.of(this).textColors;
+  StatusColors get statusColors => Theme.of(this).statusColors;
+
+  ButtonColors get buttonColors => Theme.of(this).buttonColors;
+
+  FieldColors get fieldColors => Theme.of(this).fieldColors;
 }

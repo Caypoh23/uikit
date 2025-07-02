@@ -101,7 +101,7 @@ class _AccordionState extends State<Accordion>
                         size: ButtonSize.small,
                         text: widget.buttonText!,
                         onTap: widget.onButtonTap,
-                        textColor: context.textColors.accent,
+                        textColor: context.textColors.success,
                       ),
                     ],
                   ),

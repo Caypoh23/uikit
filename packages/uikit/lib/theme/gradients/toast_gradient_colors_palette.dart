@@ -12,13 +12,13 @@ final darkToastGradientColors = _generatePaletteFromBrightness(Brightness.dark);
 ToastGradientColors _generatePaletteFromBrightness(Brightness brightness) {
   if (brightness == Brightness.light) {
     return ToastGradientColors(
-      grayStart: Palette.gray[15]!,
-      grayEnd: Palette.base[25]!,
+      grayStart: Palette.gray[10]!,
+      grayEnd: Palette.gray[10]!,
     );
   } else {
     return ToastGradientColors(
-      grayStart: Palette.gray.shade700,
-      grayEnd: Palette.base.shade600,
+      grayStart: Palette.gray[70]!,
+      grayEnd: Palette.gray[60]!,
     );
   }
 }

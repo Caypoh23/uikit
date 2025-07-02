@@ -13,21 +13,21 @@ final darkBackgroundGradientColors =
 BackgroundGradientColors _generatePaletteFromBrightness(Brightness brightness) {
   if (brightness == Brightness.light) {
     return BackgroundGradientColors(
-      primaryStart: Palette.purple[15]!,
-      primaryEnd: Palette.blue[15]!,
-      secondaryStart: Palette.base[15]!,
-      secondaryEnd: Palette.gray[15]!,
-      accentStart: Palette.purple[400]!,
-      accentEnd: Palette.blue[500]!,
+      primaryStart: Palette.purple[10]!,
+      primaryEnd: Palette.blue[10]!,
+      secondaryStart: Palette.gray[10]!,
+      secondaryEnd: Palette.gray[10]!,
+      accentStart: Palette.purple[40]!,
+      accentEnd: Palette.blue[50]!,
     );
   } else {
     return BackgroundGradientColors(
-      primaryStart: Palette.purple.shade900,
-      primaryEnd: Palette.blue.shade900,
-      secondaryStart: Palette.gray.shade900,
-      secondaryEnd: Palette.gray.shade800,
-      accentStart: Palette.purple.shade700,
-      accentEnd: Palette.blue.shade700,
+      primaryStart: Palette.purple[90]!,
+      primaryEnd: Palette.blue[90]!,
+      secondaryStart: Palette.gray[90]!,
+      secondaryEnd: Palette.gray[80]!,
+      accentStart: Palette.purple[70]!,
+      accentEnd: Palette.blue[70]!,
     );
   }
 }

@@ -12,21 +12,21 @@ final darkCardGradientColors = _generatePaletteFromBrightness(Brightness.dark);
 CardGradientColors _generatePaletteFromBrightness(Brightness brightness) {
   if (brightness == Brightness.light) {
     return CardGradientColors(
-      primaryStart: Palette.base[15]!,
-      primaryEnd: Palette.gray[15]!,
-      secondaryStart: Palette.purple[15]!,
-      secondaryEnd: Palette.blue[15]!,
-      accentStart: Palette.purple[400]!,
-      accentEnd: Palette.blue[500]!,
+      primaryStart: Palette.gray[10]!,
+      primaryEnd: Palette.gray[10]!,
+      secondaryStart: Palette.purple[10]!,
+      secondaryEnd: Palette.blue[10]!,
+      accentStart: Palette.purple[40]!,
+      accentEnd: Palette.blue[50]!,
     );
   } else {
     return CardGradientColors(
-      primaryStart: Palette.gray.shade900,
-      primaryEnd: Palette.gray.shade800,
-      secondaryStart: Palette.purple.shade900,
-      secondaryEnd: Palette.blue.shade900,
-      accentStart: Palette.purple.shade700,
-      accentEnd: Palette.blue.shade700,
+      primaryStart: Palette.gray[90]!,
+      primaryEnd: Palette.gray[80]!,
+      secondaryStart: Palette.purple[90]!,
+      secondaryEnd: Palette.blue[90]!,
+      accentStart: Palette.purple[70]!,
+      accentEnd: Palette.blue[70]!,
     );
   }
 }

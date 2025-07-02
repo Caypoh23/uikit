@@ -31,7 +31,7 @@ class MyProgressIndicator extends StatelessWidget {
         child: CircularProgressIndicator(
           strokeWidth: strokeWidth,
           valueColor: AlwaysStoppedAnimation<Color>(
-            color ?? Theme.of(context).elementColors.system,
+            color ?? context.systemColors.black,
           ),
         ),
       ),

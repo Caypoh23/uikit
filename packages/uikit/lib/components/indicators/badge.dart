@@ -64,20 +64,20 @@ class MyBadge extends StatelessWidget {
       case BadgeType.success:
       case BadgeType.warning:
       case BadgeType.info:
-        return context.textColors.white;
+        return context.textColors.invert;
     }
   }
 
   Color _badgeColor(BuildContext context) {
     switch (_type) {
       case BadgeType.danger:
-        return context.elementColors.error;
+        return context.statusColors.error;
       case BadgeType.success:
-        return context.elementColors.success;
+        return context.statusColors.success;
       case BadgeType.warning:
-        return context.elementColors.attention;
+        return context.statusColors.warning;
       case BadgeType.info:
-        return context.elementColors.info;
+        return context.statusColors.info;
     }
   }
 }

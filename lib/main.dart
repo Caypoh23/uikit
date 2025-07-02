@@ -46,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             uikit.Button(
@@ -94,10 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
               size: uikit.InputFieldSize.large,
               captionHelperText: 'helper text',
               captionText: 'df',
-              hintText: 'Enter your email',
+              hintText: 'Enter your',
               suffixLabel: 'Suffix Label',
               suffixValue: 'Suffix Value',
-              captionIconPath: UikitAssets.icons24.bell.path,
+              captionIconPath: UikitAssets.icons24.calendar.path,
               trailingIcon: Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.black,
@@ -108,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.black,
               ),
             ),
+            const SizedBox(height: 16),
             uikit.Accordion(
               title: Text(
                 'Title',
@@ -123,6 +125,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.black,
                 ),
               ),
+            ),
+            const SizedBox(height: 16),
+            uikit.Filter.filter(
+              title: 'Title',
+              onTap: () {},
+              isEnabled: true,
+              count: 1,
             ),
           ],
         ),

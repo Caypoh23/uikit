@@ -12,6 +12,27 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsIcons16Gen {
+  const $AssetsIcons16Gen();
+
+  /// File path: assets/icons16/filter.svg
+  SvgGenImage get filter => const SvgGenImage('assets/icons16/filter.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [filter];
+}
+
+class $AssetsIcons20Gen {
+  const $AssetsIcons20Gen();
+
+  /// File path: assets/icons20/chevron_down.svg
+  SvgGenImage get chevronDown =>
+      const SvgGenImage('assets/icons20/chevron_down.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [chevronDown];
+}
+
 class $AssetsIcons24Gen {
   const $AssetsIcons24Gen();
 
@@ -23,6 +44,9 @@ class $AssetsIcons24Gen {
   SvgGenImage get arrowLeft =>
       const SvgGenImage('assets/icons24/arrow_left.svg');
 
+  /// File path: assets/icons24/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/icons24/calendar.svg');
+
   /// File path: assets/icons24/chevron_down.svg
   SvgGenImage get chevronDown =>
       const SvgGenImage('assets/icons24/chevron_down.svg');
@@ -31,17 +55,46 @@ class $AssetsIcons24Gen {
   SvgGenImage get chevronUp =>
       const SvgGenImage('assets/icons24/chevron_up.svg');
 
+  /// File path: assets/icons24/clock.svg
+  SvgGenImage get clock => const SvgGenImage('assets/icons24/clock.svg');
+
   /// File path: assets/icons24/close_circle.svg
   SvgGenImage get closeCircle =>
       const SvgGenImage('assets/icons24/close_circle.svg');
+
+  /// File path: assets/icons24/contact.svg
+  SvgGenImage get contact => const SvgGenImage('assets/icons24/contact.svg');
+
+  /// File path: assets/icons24/eye.svg
+  SvgGenImage get eye => const SvgGenImage('assets/icons24/eye.svg');
+
+  /// File path: assets/icons24/eye_slash.svg
+  SvgGenImage get eyeSlash => const SvgGenImage('assets/icons24/eye_slash.svg');
+
+  /// File path: assets/icons24/info.svg
+  SvgGenImage get info => const SvgGenImage('assets/icons24/info.svg');
+
+  /// File path: assets/icons24/reload.svg
+  SvgGenImage get reload => const SvgGenImage('assets/icons24/reload.svg');
+
+  /// File path: assets/icons24/scan.svg
+  SvgGenImage get scan => const SvgGenImage('assets/icons24/scan.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
     arrowDown,
     arrowLeft,
+    calendar,
     chevronDown,
     chevronUp,
+    clock,
     closeCircle,
+    contact,
+    eye,
+    eyeSlash,
+    info,
+    reload,
+    scan,
   ];
 }
 
@@ -50,6 +103,8 @@ class UikitAssets {
 
   static const String package = 'im_uikit';
 
+  static const $AssetsIcons16Gen icons16 = $AssetsIcons16Gen();
+  static const $AssetsIcons20Gen icons20 = $AssetsIcons20Gen();
   static const $AssetsIcons24Gen icons24 = $AssetsIcons24Gen();
 }
 

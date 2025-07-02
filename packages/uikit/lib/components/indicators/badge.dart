@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
 // Project imports:
-import 'package:im_uikit/uikit.dart';
+import 'package:im_uikit/theme/app_typography_theme_data.dart';
+import 'package:im_uikit/theme/color_theme_data.dart';
 
 enum BadgeType {
   danger,
@@ -14,13 +15,23 @@ enum BadgeType {
   info,
 }
 
+const _textHeight = 1.4;
+const _maxCount = 99;
+
 class MyBadge extends StatelessWidget {
   const MyBadge.danger({
     required this.count,
+    this.child,
+    this.top = -8,
+    this.end = -10,
     super.key,
   }) : _type = BadgeType.danger;
 
   final int count;
+  final Widget? child;
+
+  final double top;
+  final double end;
 
   final BadgeType _type;
 
@@ -28,22 +39,27 @@ class MyBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return badges.Badge(
       showBadge: count > 0,
-      badgeAnimation: const badges.BadgeAnimation.scale(),
       badgeStyle: badges.BadgeStyle(
         shape: badges.BadgeShape.square,
         badgeColor: _badgeColor(context),
         padding: const EdgeInsets.symmetric(
           horizontal: 6,
-          vertical: 2,
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      badgeContent: Text(
-        count.toString(),
-        style: Theme.of(context).textTheme.labelMedium!.copyWith(
-              color: _textColor(context),
-            ),
+      position: badges.BadgePosition.topEnd(
+        top: top,
+        end: end,
       ),
+      badgeAnimation: const badges.BadgeAnimation.scale(),
+      badgeContent: Text(
+        '${count > _maxCount ? '$_maxCount+' : count}',
+        style: context.labelMedium.semibold.copyWith(
+          height: _textHeight,
+          color: _textColor(context),
+        ),
+      ),
+      child: child,
     );
   }
 
@@ -53,20 +69,20 @@ class MyBadge extends StatelessWidget {
       case BadgeType.success:
       case BadgeType.warning:
       case BadgeType.info:
-        return Theme.of(context).textColors.white;
+        return context.textColors.white;
     }
   }
 
   Color _badgeColor(BuildContext context) {
     switch (_type) {
       case BadgeType.danger:
-        return Theme.of(context).elementColors.error;
+        return context.elementColors.error;
       case BadgeType.success:
-        return Theme.of(context).elementColors.success;
+        return context.elementColors.success;
       case BadgeType.warning:
-        return Theme.of(context).elementColors.attention;
+        return context.elementColors.attention;
       case BadgeType.info:
-        return Theme.of(context).elementColors.info;
+        return context.elementColors.info;
     }
   }
 }

@@ -28,7 +28,7 @@ ElementColors _generatePaletteFromBrightness(Brightness brightness) {
       attentionPressed: Palette.yellow.shade600,
       attentionDisable: Palette.yellow[25]!,
       info: Palette.blue.shade500,
-      error: Palette.red.shade500,
+      error: const Color(0xFFFD5F55),
       errorPressed: Palette.red.shade600,
       errorDisable: Palette.red[25]!,
     );
@@ -51,7 +51,7 @@ ElementColors _generatePaletteFromBrightness(Brightness brightness) {
       attentionPressed: Palette.yellow.shade600,
       attentionDisable: Palette.yellow.shade800,
       info: Palette.blue.shade500,
-      error: Palette.red.shade500,
+      error: const Color(0xFFFD5F55),
       errorPressed: Palette.red.shade600,
       errorDisable: Palette.red.shade800,
     );

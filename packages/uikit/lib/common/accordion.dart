@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:im_uikit/components/buttons/button.dart';
 
 // Project imports:
+import 'package:im_uikit/components/buttons/button.dart';
 import 'package:im_uikit/components/buttons/ink_well.dart';
 import 'package:im_uikit/gen/assets.gen.dart';
 import 'package:im_uikit/theme/color_theme_data.dart';

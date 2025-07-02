@@ -326,6 +326,30 @@ class _InputFieldState extends State<InputField> {
 
   InputDecoration get _decoration {
     return InputDecoration(
+      border: InputBorder.none,
+      errorBorder: InputBorder.none,
+      focusedBorder: InputBorder.none,
+      enabledBorder: InputBorder.none,
+      disabledBorder: InputBorder.none,
+      //
+      contentPadding: const EdgeInsets.all(4),
+      //
+      labelStyle: context.labelMedium.regular.copyWith(
+        color: Colors.black.withValues(alpha: 0.5),
+      ),
+      hintText: widget.enabled ? widget.hintText : null,
+      hintStyle: context.bodyLarge.medium.copyWith(
+        color: Colors.black.withValues(alpha: 0.5),
+      ),
+      helperStyle: context.labelMedium.regular.copyWith(
+        color: Colors.black.withValues(alpha: 0.5),
+      ),
+      floatingLabelStyle: context.labelMedium.regular.copyWith(
+        color: Colors.black.withValues(alpha: 0.5),
+      ),
+      counterStyle: context.labelMedium.regular.copyWith(
+        color: Colors.black.withValues(alpha: 0.5),
+      ),
       label: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -345,40 +369,7 @@ class _InputFieldState extends State<InputField> {
             ),
         ],
       ),
-      labelStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      hintText: widget.enabled ? widget.hintText : null,
-      hintStyle: context.bodyLarge.medium.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      helperStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      floatingLabelStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      counterStyle: context.labelMedium.regular.copyWith(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      contentPadding: _contentPadding,
-      border: InputBorder.none,
-      errorBorder: InputBorder.none,
-      focusedBorder: InputBorder.none,
-      enabledBorder: InputBorder.none,
-      disabledBorder: InputBorder.none,
     );
-  }
-
-  EdgeInsets get _contentPadding {
-    switch (widget.size) {
-      case InputFieldSize.small:
-        return const EdgeInsets.symmetric(horizontal: 4, vertical: 4);
-      case InputFieldSize.medium:
-        return const EdgeInsets.symmetric(horizontal: 4, vertical: 8);
-      case InputFieldSize.large:
-        return const EdgeInsets.symmetric(horizontal: 4, vertical: 12);
-    }
   }
 
   Widget _captionWidget() {
@@ -445,7 +436,7 @@ class _InputFieldState extends State<InputField> {
       case InputFieldStatus.success:
         return context.textColors.success;
       default:
-        return Colors.black.withValues(alpha: 0.5);
+        return Colors.black;
     }
   }
 

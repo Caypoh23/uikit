@@ -11,7 +11,7 @@ class MyInkWell extends StatelessWidget {
     this.boxShadow,
     this.splashColor,
     this.hoverColor,
-
+    this.focusColor,
     //
     this.onLongPress,
     this.onDoubleTap,
@@ -25,6 +25,7 @@ class MyInkWell extends StatelessWidget {
     this.height,
     this.width,
     this.alignment,
+    this.focusNode,
     super.key,
   });
 
@@ -51,6 +52,9 @@ class MyInkWell extends StatelessWidget {
 
   final Color? splashColor;
   final Color? hoverColor;
+  final Color? focusColor;
+
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +74,9 @@ class MyInkWell extends StatelessWidget {
         type: MaterialType.transparency,
         child: InkWell(
           onTap: onTap,
+          focusNode: focusNode,
           hoverColor: hoverColor,
+          focusColor: focusColor,
           onLongPress: onLongPress,
           onDoubleTap: onDoubleTap,
           splashColor: splashColor,

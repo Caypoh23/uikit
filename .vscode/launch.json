@@ -2,16 +2,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "uikit",
+            "name": "Dev [Debug]",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "debug"
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
         },
         {
-            "name": "uikit (release mode)",
+            "name": "Dev [Release]",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "program": "lib/main.dart",
         },
+        {
+            "name": "All Tests",
+            "type": "dart",
+            "request": "launch",
+            "program": "test/",
+        }
     ]
 }

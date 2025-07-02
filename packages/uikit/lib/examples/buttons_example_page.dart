@@ -57,7 +57,7 @@ class _ButtonsExamplePageState extends State<ButtonsExamplePage> {
                 isLoading: _isLoading,
                 showText: _showText,
                 showSubtext: _showSubtext,
-                enable: _enable,
+                isEnabled: _enable,
                 width: _width,
                 iconStart: _showIconStart
                     ? Icon(Icons.refresh_rounded,

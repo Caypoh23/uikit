@@ -42,7 +42,7 @@ class Button extends StatelessWidget {
     this.isLoading = false,
     this.showText = true,
     this.showSubtext = false,
-    this.enable = true,
+    this.isEnabled = true,
     //
     this.width,
     super.key,
@@ -68,7 +68,7 @@ class Button extends StatelessWidget {
   final bool isLoading;
   final bool showText;
   final bool showSubtext;
-  final bool enable;
+  final bool isEnabled;
 
   final double? width;
 
@@ -83,9 +83,9 @@ class Button extends StatelessWidget {
         onLongPress: onLongPress,
         borderRadius: _borderRadius,
         splashColor: _splashColor(context),
-        onTap: enable && !isLoading ? onTap : null,
-        hoverColor: enable || isLoading ? _hoverColor(context) : null,
-        color: enable ? _enabledColor(context) : _disabledColor(context),
+        onTap: isEnabled && !isLoading ? onTap : null,
+        hoverColor: isEnabled || isLoading ? _hoverColor(context) : null,
+        color: isEnabled ? _enabledColor(context) : _disabledColor(context),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -225,7 +225,7 @@ class Button extends StatelessWidget {
 
   Color _textColor(BuildContext context) {
     final textColors = Theme.of(context).textColors;
-    if (!enable) {
+    if (!isEnabled) {
       return textColors.tertiary.withValues(alpha: 0.5);
     }
     if (textColor != null) {
@@ -249,7 +249,7 @@ class Button extends StatelessWidget {
   ///
 
   Color _badgeColor(BuildContext context) {
-    if (!enable) {
+    if (!isEnabled) {
       return context.elementColors.tertiary.withValues(alpha: 0.5);
     }
     return switch (type) {

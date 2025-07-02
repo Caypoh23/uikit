@@ -25,12 +25,27 @@ class $AssetsIcons16Gen {
 class $AssetsIcons20Gen {
   const $AssetsIcons20Gen();
 
+  /// File path: assets/icons20/arrow_up_down.svg
+  SvgGenImage get arrowUpDown =>
+      const SvgGenImage('assets/icons20/arrow_up_down.svg');
+
   /// File path: assets/icons20/chevron_down.svg
   SvgGenImage get chevronDown =>
       const SvgGenImage('assets/icons20/chevron_down.svg');
 
+  /// File path: assets/icons20/slider_02.svg
+  SvgGenImage get slider02 => const SvgGenImage('assets/icons20/slider_02.svg');
+
+  /// File path: assets/icons20/slider_03.svg
+  SvgGenImage get slider03 => const SvgGenImage('assets/icons20/slider_03.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [chevronDown];
+  List<SvgGenImage> get values => [
+    arrowUpDown,
+    chevronDown,
+    slider02,
+    slider03,
+  ];
 }
 
 class $AssetsIcons24Gen {

@@ -127,11 +127,41 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 16),
-            uikit.Filter.filter(
-              title: 'Title',
-              onTap: () {},
-              isEnabled: true,
-              count: 1,
+            Row(
+              children: [
+                uikit.Filter.filter(
+                  title: 'Title',
+                  onTap: () {},
+                  isEnabled: true,
+                  count: 1,
+                ),
+                const SizedBox(width: 16),
+                uikit.Filter.filter(
+                  title: 'Title',
+                  onTap: () {},
+                  isEnabled: true,
+                  count: 1000,
+                ),
+                const SizedBox(width: 16),
+                uikit.Filter.tab(
+                  title: '99',
+                  onTap: () {},
+                  isEnabled: true,
+                  count: 10,
+                ),
+                const SizedBox(width: 16),
+                uikit.Filter.sort(
+                  onTap: () {},
+                  isEnabled: true,
+                  count: 1,
+                ),
+                const SizedBox(width: 16),
+                uikit.Filter.sort(
+                  onTap: () {},
+                  isEnabled: true,
+                  count: 10,
+                ),
+              ],
             ),
           ],
         ),

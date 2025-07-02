@@ -42,14 +42,8 @@ class MyBadge extends StatelessWidget {
       badgeStyle: badges.BadgeStyle(
         shape: badges.BadgeShape.square,
         badgeColor: _badgeColor(context),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 6,
-        ),
         borderRadius: BorderRadius.circular(20),
-      ),
-      position: badges.BadgePosition.topEnd(
-        top: top,
-        end: end,
+        padding: const EdgeInsets.symmetric(horizontal: 6),
       ),
       badgeAnimation: const badges.BadgeAnimation.scale(),
       badgeContent: Text(
@@ -59,6 +53,7 @@ class MyBadge extends StatelessWidget {
           color: _textColor(context),
         ),
       ),
+      position: badges.BadgePosition.topEnd(top: top, end: end),
       child: child,
     );
   }

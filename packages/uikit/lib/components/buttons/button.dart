@@ -26,6 +26,7 @@ class Button extends StatelessWidget {
   const Button({
     required this.text,
     required this.onTap,
+    this.textColor,
     //
     this.onLongPress,
     //
@@ -48,6 +49,7 @@ class Button extends StatelessWidget {
   });
 
   final String text;
+  final Color? textColor;
 
   final Widget? iconStart;
   final Widget? iconEnd;
@@ -215,18 +217,19 @@ class Button extends StatelessWidget {
   /// Button Text Styles
   ///
 
-  TextStyle _textStyle(BuildContext context) => switch (size) {
-        ButtonSize.large ||
-        ButtonSize.medium =>
-          context.bodyLarge.semibold.copyWith(color: _textColor(context)),
-        ButtonSize.small =>
-          context.bodyMedium.semibold.copyWith(color: _textColor(context)),
-      };
+  TextStyle _textStyle(BuildContext context) {
+    return context.bodyLarge.semibold.copyWith(
+      color: _textColor(context),
+    );
+  }
 
   Color _textColor(BuildContext context) {
     final textColors = Theme.of(context).textColors;
     if (!enable) {
       return textColors.tertiary.withValues(alpha: 0.5);
+    }
+    if (textColor != null) {
+      return textColor!;
     }
     return switch (type) {
       ButtonType.ghost ||

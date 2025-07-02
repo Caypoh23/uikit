@@ -32,15 +32,18 @@ enum InputFieldStatus {
 
 class InputField extends StatefulWidget {
   const InputField({
-    this.size = InputFieldSize.large,
     this.label,
     this.hintText,
     this.controller,
     this.initialValue,
+    this.suffixLabel,
+    this.suffixValue,
     //
     this.captionIconPath,
     this.captionText,
     this.captionHelperText,
+    //
+    this.size = InputFieldSize.large,
     this.status = InputFieldStatus.info,
     //
     this.enabled = true,
@@ -75,6 +78,8 @@ class InputField extends StatefulWidget {
   final String? label;
   final String? hintText;
   final String? initialValue;
+  final String? suffixLabel;
+  final String? suffixValue;
   final TextEditingController? controller;
 
   final InputFieldSize size;
@@ -219,12 +224,32 @@ class _InputFieldState extends State<InputField> {
                           onChanged: widget.onChanged,
                           onEditingComplete: widget.onEditingComplete,
                           //
-                          //
                           textAlignVertical: TextAlignVertical.center,
                           magnifierConfiguration:
                               TextMagnifierConfiguration.disabled,
                         ),
                       ),
+                      if (widget.suffixLabel != null) ...[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              widget.suffixLabel!,
+                              style: context.labelMedium.regular.copyWith(
+                                color: Colors.black.withValues(alpha: 0.5),
+                              ),
+                            ),
+                            Text(
+                              widget.suffixValue ?? '',
+                              style: context.bodyLarge.medium.copyWith(
+                                color: Colors.black.withValues(alpha: 0.5),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 12),
+                      ],
                       if (widget.isLoading) ...[
                         const SizedBox(width: 8),
                         _loading,

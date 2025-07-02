@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:im_uikit/gen/assets.gen.dart';
 
 // Package imports:
+import 'package:im_uikit/gen/assets.gen.dart';
 import 'package:im_uikit/uikit.dart' as uikit;
 
 void main() {
@@ -95,6 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
               captionHelperText: 'helper text',
               captionText: 'df',
               hintText: 'Enter your email',
+              suffixLabel: 'Suffix Label',
+              suffixValue: 'Suffix Value',
               captionIconPath: UikitAssets.icons24.bell.path,
               trailingIcon: Icon(
                 Icons.arrow_forward_ios,
@@ -104,6 +106,22 @@ class _MyHomePageState extends State<MyHomePage> {
               leadingIcon: Icon(
                 Icons.email,
                 color: Colors.black,
+              ),
+            ),
+            uikit.Accordion(
+              title: Text(
+                'Title',
+                style: context.bodyMedium.medium.copyWith(
+                  color: Colors.black,
+                ),
+              ),
+              buttonText: 'Button Link',
+              onButtonTap: () {},
+              content: Text(
+                'If we have a long text, we can use this option to accomplish the goal',
+                style: context.labelLarge.regular.copyWith(
+                  color: Colors.black,
+                ),
               ),
             ),
           ],

@@ -1,8 +1,11 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:im_uikit/components/buttons/button.dart';
 
 // Project imports:
 import 'package:im_uikit/components/buttons/ink_well.dart';
+import 'package:im_uikit/gen/assets.gen.dart';
+import 'package:im_uikit/theme/color_theme_data.dart';
 
 const _duration = Duration(milliseconds: 300);
 
@@ -10,13 +13,15 @@ class Accordion extends StatefulWidget {
   const Accordion({
     required this.title,
     this.content,
-    this.button,
+    this.buttonText,
+    this.onButtonTap,
     super.key,
   });
 
   final Widget title;
   final Widget? content;
-  final Widget? button;
+  final String? buttonText;
+  final VoidCallback? onButtonTap;
 
   @override
   State<Accordion> createState() => _AccordionState();
@@ -56,35 +61,56 @@ class _AccordionState extends State<Accordion>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        MyInkWell(
-          onTap: _toggle,
-          child: Row(
-            children: [
-              Expanded(child: widget.title),
-              IconButton(
-                onPressed: _toggle,
-                icon: _opened
-                    ? const Icon(Icons.arrow_drop_up_rounded)
-                    : const Icon(Icons.arrow_drop_down_rounded),
-              ),
-            ],
+    return MyInkWell(
+      onTap: _toggle,
+      color: context.fieldColors.background,
+      borderRadius: BorderRadius.circular(16),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              children: [
+                Expanded(child: widget.title),
+                _opened
+                    ? UikitAssets.icons24.chevronUp.svg()
+                    : UikitAssets.icons24.chevronDown.svg(),
+              ],
+            ),
           ),
-        ),
-        SizeTransition(
-          axisAlignment: 1,
-          sizeFactor: _animation,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              widget.content ?? const SizedBox.shrink(),
-              widget.button ?? const SizedBox.shrink(),
-            ],
+          SizeTransition(
+            axisAlignment: 1,
+            sizeFactor: _animation,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 4),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8, right: 16),
+                  child: widget.content ?? const SizedBox.shrink(),
+                ),
+                if (widget.buttonText != null) ...[
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Button(
+                        type: ButtonType.ghost,
+                        size: ButtonSize.small,
+                        text: widget.buttonText!,
+                        onTap: widget.onButtonTap,
+                        textColor: context.textColors.accent,
+                      ),
+                    ],
+                  ),
+                ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

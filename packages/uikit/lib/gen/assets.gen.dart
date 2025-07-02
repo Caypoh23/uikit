@@ -7,11 +7,8 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-// Flutter imports:
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-
-// Package imports:
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
@@ -26,69 +23,25 @@ class $AssetsIcons24Gen {
   SvgGenImage get arrowLeft =>
       const SvgGenImage('assets/icons24/arrow_left.svg');
 
-  /// File path: assets/icons24/bell.svg
-  SvgGenImage get bell => const SvgGenImage('assets/icons24/bell.svg');
+  /// File path: assets/icons24/chevron_down.svg
+  SvgGenImage get chevronDown =>
+      const SvgGenImage('assets/icons24/chevron_down.svg');
 
-  /// File path: assets/icons24/briefcase.svg
-  SvgGenImage get briefcase =>
-      const SvgGenImage('assets/icons24/briefcase.svg');
-
-  /// File path: assets/icons24/calendar.svg
-  SvgGenImage get calendar => const SvgGenImage('assets/icons24/calendar.svg');
-
-  /// File path: assets/icons24/card.svg
-  SvgGenImage get card => const SvgGenImage('assets/icons24/card.svg');
-
-  /// File path: assets/icons24/card_arrow.svg
-  SvgGenImage get cardArrow =>
-      const SvgGenImage('assets/icons24/card_arrow.svg');
-
-  /// File path: assets/icons24/check.svg
-  SvgGenImage get check => const SvgGenImage('assets/icons24/check.svg');
+  /// File path: assets/icons24/chevron_up.svg
+  SvgGenImage get chevronUp =>
+      const SvgGenImage('assets/icons24/chevron_up.svg');
 
   /// File path: assets/icons24/close_circle.svg
   SvgGenImage get closeCircle =>
       const SvgGenImage('assets/icons24/close_circle.svg');
 
-  /// File path: assets/icons24/eye_off.svg
-  SvgGenImage get eyeOff => const SvgGenImage('assets/icons24/eye_off.svg');
-
-  /// File path: assets/icons24/eye_on.svg
-  SvgGenImage get eyeOn => const SvgGenImage('assets/icons24/eye_on.svg');
-
-  /// File path: assets/icons24/home.svg
-  SvgGenImage get home => const SvgGenImage('assets/icons24/home.svg');
-
-  /// File path: assets/icons24/plus.svg
-  SvgGenImage get plus => const SvgGenImage('assets/icons24/plus.svg');
-
-  /// File path: assets/icons24/profile.svg
-  SvgGenImage get profile => const SvgGenImage('assets/icons24/profile.svg');
-
-  /// File path: assets/icons24/scan.svg
-  SvgGenImage get scan => const SvgGenImage('assets/icons24/scan.svg');
-
-  /// File path: assets/icons24/withdraw.svg
-  SvgGenImage get withdraw => const SvgGenImage('assets/icons24/withdraw.svg');
-
   /// List of all assets
   List<SvgGenImage> get values => [
     arrowDown,
     arrowLeft,
-    bell,
-    briefcase,
-    calendar,
-    card,
-    cardArrow,
-    check,
+    chevronDown,
+    chevronUp,
     closeCircle,
-    eyeOff,
-    eyeOn,
-    home,
-    plus,
-    profile,
-    scan,
-    withdraw,
   ];
 }
 
